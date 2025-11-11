@@ -1,0 +1,200 @@
+[
+  {
+    "id": 8478891,
+    "fullName": "Mason Appleton",
+    "position": "C",
+    "number": 22,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8478891.png",
+    "team": "DET"
+  },
+  {
+    "id": 8481013,
+    "fullName": "Jonatan Berggren",
+    "position": "R",
+    "number": 48,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8481013.png",
+    "team": "DET"
+  },
+  {
+    "id": 8477456,
+    "fullName": "J.T. Compher",
+    "position": "L",
+    "number": 37,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8477456.png",
+    "team": "DET"
+  },
+  {
+    "id": 8477429,
+    "fullName": "Andrew Copp",
+    "position": "C",
+    "number": 18,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8477429.png",
+    "team": "DET"
+  },
+  {
+    "id": 8479337,
+    "fullName": "Alex DeBrincat",
+    "position": "R",
+    "number": 93,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8479337.png",
+    "team": "DET"
+  },
+  {
+    "id": 8484471,
+    "fullName": "Emmitt Finnie",
+    "position": "C",
+    "number": 58,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8484471.png",
+    "team": "DET"
+  },
+  {
+    "id": 8474141,
+    "fullName": "Patrick Kane",
+    "position": "R",
+    "number": 88,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8474141.png",
+    "team": "DET"
+  },
+  {
+    "id": 8483464,
+    "fullName": "Marco Kasper",
+    "position": "C",
+    "number": 92,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8483464.png",
+    "team": "DET"
+  },
+  {
+    "id": 8477946,
+    "fullName": "Dylan Larkin",
+    "position": "C",
+    "number": 71,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8477946.png",
+    "team": "DET"
+  },
+  {
+    "id": 8479992,
+    "fullName": "Michael Rasmussen",
+    "position": "C",
+    "number": 27,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8479992.png",
+    "team": "DET"
+  },
+  {
+    "id": 8482078,
+    "fullName": "Lucas Raymond",
+    "position": "L",
+    "number": 23,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8482078.png",
+    "team": "DET"
+  },
+  {
+    "id": 8481725,
+    "fullName": "Elmer Soderblom",
+    "position": "L",
+    "number": 85,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8481725.png",
+    "team": "DET"
+  },
+  {
+    "id": 8474037,
+    "fullName": "James van Riemsdyk",
+    "position": "L",
+    "number": 21,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8474037.png",
+    "team": "DET"
+  },
+  {
+    "id": 8480879,
+    "fullName": "Jacob Bernard-Docker",
+    "position": "D",
+    "number": 25,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8480879.png",
+    "team": "DET"
+  },
+  {
+    "id": 8475279,
+    "fullName": "Ben Chiarot",
+    "position": "D",
+    "number": 8,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8475279.png",
+    "team": "DET"
+  },
+  {
+    "id": 8482762,
+    "fullName": "Simon Edvinsson",
+    "position": "D",
+    "number": 77,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8482762.png",
+    "team": "DET"
+  },
+  {
+    "id": 8474612,
+    "fullName": "Travis Hamonic",
+    "position": "D",
+    "number": 52,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8474612.png",
+    "team": "DET"
+  },
+  {
+    "id": 8481607,
+    "fullName": "Albert Johansson",
+    "position": "D",
+    "number": 20,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8481607.png",
+    "team": "DET"
+  },
+  {
+    "id": 8484223,
+    "fullName": "Axel Sandin-Pellikka",
+    "position": "D",
+    "number": 44,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8484223.png",
+    "team": "DET"
+  },
+  {
+    "id": 8481542,
+    "fullName": "Moritz Seider",
+    "position": "D",
+    "number": 53,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8481542.png",
+    "team": "DET"
+  },
+  {
+    "id": 8476434,
+    "fullName": "John Gibson",
+    "position": "G",
+    "number": 36,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8476434.png",
+    "team": "DET"
+  },
+  {
+    "id": 8475660,
+    "fullName": "Cam Talbot",
+    "position": "G",
+    "number": 39,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8475660.png",
+    "team": "DET"
+  }
+]

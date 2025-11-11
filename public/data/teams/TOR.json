@@ -1,0 +1,218 @@
+[
+  {
+    "id": 8478104,
+    "fullName": "Sammy Blais",
+    "position": "L",
+    "number": 79,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8478104.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8477503,
+    "fullName": "Max Domi",
+    "position": "C",
+    "number": 11,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8477503.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8475714,
+    "fullName": "Calle Jarnkrok",
+    "position": "C",
+    "number": 19,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8475714.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8478057,
+    "fullName": "Dakota Joshua",
+    "position": "C",
+    "number": 81,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8478057.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8482720,
+    "fullName": "Matthew Knies",
+    "position": "L",
+    "number": 23,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8482720.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8476872,
+    "fullName": "Scott Laughton",
+    "position": "C",
+    "number": 24,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8476872.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8478904,
+    "fullName": "Steven Lorentz",
+    "position": "C",
+    "number": 18,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8478904.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8481711,
+    "fullName": "Matias Maccelli",
+    "position": "L",
+    "number": 63,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8481711.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8479318,
+    "fullName": "Auston Matthews",
+    "position": "C",
+    "number": 34,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8479318.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8482259,
+    "fullName": "Bobby McMann",
+    "position": "C",
+    "number": 74,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8482259.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8477939,
+    "fullName": "William Nylander",
+    "position": "R",
+    "number": 88,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8477939.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8481582,
+    "fullName": "Nicholas Robertson",
+    "position": "L",
+    "number": 89,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8481582.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8478462,
+    "fullName": "Nicolas Roy",
+    "position": "C",
+    "number": 55,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8478462.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8475166,
+    "fullName": "John Tavares",
+    "position": "C",
+    "number": 91,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8475166.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8481122,
+    "fullName": "Simon Benoit",
+    "position": "D",
+    "number": 2,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8481122.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8478443,
+    "fullName": "Brandon Carlo",
+    "position": "D",
+    "number": 25,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8478443.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8475171,
+    "fullName": "Oliver Ekman-Larsson",
+    "position": "D",
+    "number": 95,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8475171.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8476931,
+    "fullName": "Jake McCabe",
+    "position": "D",
+    "number": 22,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8476931.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8477541,
+    "fullName": "Dakota Mermis",
+    "position": "D",
+    "number": 36,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8477541.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8479026,
+    "fullName": "Philippe Myers",
+    "position": "D",
+    "number": 51,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8479026.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8476853,
+    "fullName": "Morgan Rielly",
+    "position": "D",
+    "number": 44,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8476853.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8475690,
+    "fullName": "Chris Tanev",
+    "position": "D",
+    "number": 8,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8475690.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8480051,
+    "fullName": "Cayden Primeau",
+    "position": "G",
+    "number": 30,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8480051.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8476932,
+    "fullName": "Anthony Stolarz",
+    "position": "G",
+    "number": 41,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8476932.png",
+    "team": "TOR"
+  }
+]

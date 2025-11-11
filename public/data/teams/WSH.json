@@ -1,0 +1,227 @@
+[
+  {
+    "id": 8478463,
+    "fullName": "Anthony Beauvillier",
+    "position": "L",
+    "number": 72,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8478463.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8475343,
+    "fullName": "Nic Dowd",
+    "position": "C",
+    "number": 26,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8475343.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8479400,
+    "fullName": "Pierre-Luc Dubois",
+    "position": "L",
+    "number": 80,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8479400.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8479520,
+    "fullName": "Brandon Duhaime",
+    "position": "R",
+    "number": 22,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8479520.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8483573,
+    "fullName": "Ethen Frank",
+    "position": "C",
+    "number": 53,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8483573.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8482148,
+    "fullName": "Hendrix Lapierre",
+    "position": "C",
+    "number": 29,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8482148.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8484186,
+    "fullName": "Ryan Leonard",
+    "position": "R",
+    "number": 9,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8484186.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8481580,
+    "fullName": "Connor McMichael",
+    "position": "C",
+    "number": 24,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8481580.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8477947,
+    "fullName": "Sonny Milano",
+    "position": "L",
+    "number": 15,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8477947.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8471214,
+    "fullName": "Alex Ovechkin",
+    "position": "L",
+    "number": 8,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8471214.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8481656,
+    "fullName": "Aliaksei Protas",
+    "position": "C",
+    "number": 21,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8481656.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8478867,
+    "fullName": "Spencer Smallman",
+    "position": "R",
+    "number": 81,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8478867.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8482088,
+    "fullName": "Justin Sourdif",
+    "position": "R",
+    "number": 34,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8482088.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8478440,
+    "fullName": "Dylan Strome",
+    "position": "C",
+    "number": 17,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8478440.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8476880,
+    "fullName": "Tom Wilson",
+    "position": "R",
+    "number": 43,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8476880.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8474590,
+    "fullName": "John Carlson",
+    "position": "D",
+    "number": 74,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8474590.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8480990,
+    "fullName": "Declan Chisholm",
+    "position": "D",
+    "number": 47,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8480990.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8479345,
+    "fullName": "Jakob Chychrun",
+    "position": "D",
+    "number": 6,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8479345.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8480796,
+    "fullName": "Martin Fehérváry",
+    "position": "D",
+    "number": 42,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8480796.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8475795,
+    "fullName": "Dylan McIlrath",
+    "position": "D",
+    "number": 52,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8475795.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8478911,
+    "fullName": "Matt Roy",
+    "position": "D",
+    "number": 3,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8478911.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8480873,
+    "fullName": "Rasmus Sandin",
+    "position": "D",
+    "number": 38,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8480873.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8477845,
+    "fullName": "Trevor van Riemsdyk",
+    "position": "D",
+    "number": 57,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8477845.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8479292,
+    "fullName": "Charlie Lindgren",
+    "position": "G",
+    "number": 79,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8479292.png",
+    "team": "WSH"
+  },
+  {
+    "id": 8480313,
+    "fullName": "Logan Thompson",
+    "position": "G",
+    "number": 48,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/WSH/8480313.png",
+    "team": "WSH"
+  }
+]

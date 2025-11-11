@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .card { @apply rounded-2xl border border-gray-200 p-4 shadow-sm bg-white; }
+  .btn { @apply inline-flex items-center justify-center rounded-lg px-3 py-2 text-sm font-medium border border-gray-300 bg-white hover:bg-gray-50 active:scale-[0.99] transition; }
+  .btn-primary { @apply bg-blue-600 text-white border-transparent hover:bg-blue-700; }
+  .btn-danger { @apply bg-red-600 text-white border-transparent hover:bg-red-700; }
+  .input { @apply w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500; }
+  .label { @apply text-sm font-medium text-gray-700; }
+}

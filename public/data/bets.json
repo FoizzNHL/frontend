@@ -1,0 +1,25 @@
+{
+    "bets": [
+        {
+            "id": "Parlay",
+            "type": "parlay",
+            "legs": [
+                {
+                    "type": "moneyline",
+                    "teamTri": "NJD"
+                },
+                {
+                    "type": "player_goal",
+                    "player": {
+                        "name": "Jack Hughes"
+                    }
+                },
+                {
+                    "type": "first_team_to_score",
+                    "teamTri": "NJD"
+                }
+            ],
+            "stake": 2
+        }
+    ]
+}
