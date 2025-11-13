@@ -5,7 +5,9 @@ import type { IClientOptions, MqttClient } from 'mqtt';
 export type Acknowledgement = { ok: boolean; action?: string; error?: string; ts?: number; ackId?: string; [k: string]: any };
 
 export function useMqtt(opts?: { host?: string; port?: number; cmdTopic?: string; ackTopic?: string; }) {
-  const { host='10.0.0.25', port=9001, cmdTopic='lighting/cmd', ackTopic='lighting/ack' } = opts || {};
+  const lightHost = import.meta.env.VITE_LIGHT_HOST;
+  const lightPort = import.meta.env.VITE_LIGHT_PORT;
+  const { host=lightHost, port=lightPort, cmdTopic='lighting/cmd', ackTopic='lighting/ack' } = opts || {};
   const [connected, setConnected] = useState(false);
   const [client, setClient] = useState<MqttClient | null>(null);
   const [acks, setAcks] = useState<Acknowledgement[]>([]);

@@ -5,10 +5,7 @@ import { hexToRgb } from "../lib/utils";
 
 export default function LEDControllerTest() {
   const sound = useSound();
-  const { connected, publishJson, cmdTopic, acks } = useMqtt({
-    host: "10.0.0.25",
-    port: 9001,
-  });
+  const { connected, publishJson, cmdTopic, acks } = useMqtt();
 
   const [playerNumber, setPlayerNumber] = useState("22");
   const [displayNumber, setDisplayNumber] = useState("42");

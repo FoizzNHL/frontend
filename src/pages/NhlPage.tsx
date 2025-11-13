@@ -22,10 +22,7 @@ export default function NhlPage() {
   const [score, setScore] = useState<any | null>(null);
   const [goals, setGoals] = useState<any | null>(null);
 
-  const { connected, publishJson, cmdTopic, acks } = useMqtt({
-    host: "10.0.0.25",
-    port: 9001,
-  });
+  const { connected, publishJson, cmdTopic, acks } = useMqtt();
 
   const send = (cmd) => publishJson(cmdTopic, cmd);
 
