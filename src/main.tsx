@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LEDControllerTest from './pages/LEDControllerTest.tsx';
 import NhlPage from './pages/NhlPage.tsx';
 import { SoundProvider } from './providers/SoundProvider.tsx';
+import BetsEditor from './pages/BetsEditor.tsx';
 
  const router = createBrowserRouter([
       {
@@ -19,6 +20,10 @@ import { SoundProvider } from './providers/SoundProvider.tsx';
           {
             path: '/tests', // This makes Home the default child route for '/'
             element: <LEDControllerTest />,
+          },
+          {
+            path: '/bets-editor', // This makes Home the default child route for '/'
+            element: <BetsEditor />,
           }
         ],
       },

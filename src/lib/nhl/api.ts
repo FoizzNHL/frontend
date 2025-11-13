@@ -28,3 +28,60 @@ export async function getGameGoals(gameId: number | string) {
   const id = String(gameId).trim();
   return asJson(await fetch(`${apiUrl}/api/game/${id}/goals`));
 }
+
+export type BetLeg =
+  | { type: "moneyline"; teamTri: string }
+  | { type: "total"; pick: "over" | "under"; line: number; teamTri?: string } // teamTri => team_total alias
+  | {
+      type: "team_total";
+      pick: "over" | "under";
+      line: number;
+      teamTri: string;
+    }
+  | { type: "player_goal"; player: { name: string }; count?: number }
+  | { type: "first_goal"; player: { name: string } }
+  | { type: "first_team_to_score"; teamTri: string };
+
+export type Bet = {
+  id: string;
+  type: "parlay";
+  legs: BetLeg[];
+  stake?: number;
+};
+
+export type BetsFile = { bets: Bet[] };
+
+/**
+ * Load bets from backend.
+ * - Backend: GET /api/bets
+ * - Returns: { bets: Bet[] }
+ */
+export async function getBets(): Promise<BetsFile> {
+  return asJson(
+    await fetch(`${apiUrl}/api/bets`, {
+      cache: "no-store",
+    })
+  );
+}
+
+/**
+ * Save/overwrite the bets file on the backend.
+ * - Backend: PUT /api/bets
+ * - Body: { bets: Bet[] }
+ * - Backend response is expected to be JSON (e.g. { ok: true })
+ */
+export async function saveBets(
+  bets: BetsFile | Bet[]
+): Promise<{ ok: boolean; error?: string }> {
+  const body: BetsFile = Array.isArray((bets as any).bets)
+    ? (bets as BetsFile)
+    : { bets: bets as Bet[] };
+
+  return asJson(
+    await fetch(`${apiUrl}/api/bets`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+  );
+}

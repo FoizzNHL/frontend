@@ -8,6 +8,7 @@ function App() {
   const navItems = [
     { path: "/", label: "NHL" },
     { path: "/tests", label: "LED Tests" },
+    { path: "/bets-editor", label: "Bets editor" },
   ];
 
   const isActive = (p) => location.pathname === p;

@@ -14,7 +14,7 @@ export default function NhlPage() {
   const sound = useSound();
 
   const [team] = useState(MTL_ABBR);
-  const [disableSound] = useState<boolean>(true);
+  const [disableSound] = useState<boolean>(false);
   const [date, setDate] = useState<string>(formatDate(today, "yy-mm-dd"));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

@@ -1,5 +1,6 @@
 // src/components/BetValidator.tsx
 import { useEffect, useMemo, useState } from "react";
+import { getBets, saveBets } from "../lib/nhl/api";
 
 type BetLeg =
   | { type: "moneyline"; teamTri: string }
@@ -239,9 +240,10 @@ export function BetValidator({
     (async () => {
       try {
         setErr(null);
-        const res = await fetch(sourceUrl, { cache: "no-store" });
-        const data: BetsFile = await res.json();
-        if (alive) setBets(data.bets ?? []);
+        const json: BetsFile = await getBets();
+        console.log(json.bets);
+       if (alive) setBets(json.bets);
+        // if (alive) setBets(data.bets ?? []);
       } catch (e: any) {
         if (alive) setErr(e?.message ?? "Failed to load bets.json");
       }
