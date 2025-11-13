@@ -1,5 +1,5 @@
 // src/lib/nhl/api.ts
-import { API_BASE } from "../constants";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 /** Optional: quick guard for YYYY-MM-DD */
 const isDate = (s?: string | null) => !!s && /^\d{4}-\d{2}-\d{2}$/.test(s);
@@ -14,7 +14,7 @@ const asJson = async (r: Response) => {
  * - Backend: GET /api/game/now?team=MTL&date=YYYY-MM-DD
  */
 export async function getGameForTeam(team: string, date?: string | null) {
-  const u = new URL(`${API_BASE}/api/game/now`);
+  const u = new URL(`${apiUrl}/api/game/now`);
   u.searchParams.set("team", String(team).toUpperCase());
   if (isDate(date)) u.searchParams.set("date", String(date));
   return asJson(await fetch(u.toString()));
@@ -26,5 +26,5 @@ export async function getGameForTeam(team: string, date?: string | null) {
  */
 export async function getGameGoals(gameId: number | string) {
   const id = String(gameId).trim();
-  return asJson(await fetch(`${API_BASE}/api/game/${id}/goals`));
+  return asJson(await fetch(`${apiUrl}/api/game/${id}/goals`));
 }
