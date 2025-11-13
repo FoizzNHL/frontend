@@ -14,7 +14,8 @@ export function useMqtt(opts?: { host?: string; port?: number; cmdTopic?: string
   const clientRef = useRef<MqttClient | null>(null);
 
   useEffect(() => {
-    const url = `ws://${host}:${port}`;
+    // const url = `ws://${host}:${port}`;
+    const url = `wss://lights.mitradev.com/mqtt`;
     const options: IClientOptions = { reconnectPeriod: 2000, clean: true };
     const c = mqtt.connect(url, options);
     clientRef.current = c;
