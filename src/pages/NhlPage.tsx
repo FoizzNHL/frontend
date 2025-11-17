@@ -12,6 +12,7 @@ import { MTL_ABBR } from "../lib/constants";
 export default function NhlPage() {
   const today = new Date();
   const sound = useSound();
+  const PROJECTION_URL = "/goal-projection.html"; // or your route
 
   const [team] = useState(MTL_ABBR);
   const [disableSound] = useState<boolean>(false);
@@ -88,13 +89,28 @@ export default function NhlPage() {
   });
 
   function simulateNewGoal() {
-    if (!goals) return;
-    const fake = {
-      ...goals.goals[1],
-      timeInPeriod: "10:00",
-      fake: true,
-    };
-    onNewGoal(fake, [...goals.goals, fake]); // your watcher callback
+    // if (!goals) return;
+    // const fake = {
+    //   ...goals.goals[1],
+    //   timeInPeriod: "10:00",
+    //   fake: true,
+    // };
+    // onNewGoal(fake, [...goals.goals, fake]); // your watcher callback
+
+    openGoalAnimation();
+  }
+
+  const openGoalAnimation = () => {
+      const goalWindow = window.open(
+        PROJECTION_URL,
+        "projector",
+        "width=1920,height=1080"
+    );
+
+    // give the window time to load
+    setTimeout(() => {
+        goalWindow?.postMessage({ type: "GOAL", team: "MTL" }, "*");
+    }, 500);
   }
 
   return (

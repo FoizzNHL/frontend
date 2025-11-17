@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Goal Projection</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="goalCanvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById("goalCanvas");
+    const ctx = canvas.getContext("2d");
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    const logo = new Image();
+    logo.src = "/assets/ch-logo.png"; // <- put your Canadiens logo file here
+
+    let animating = false;
+    let startTime = 0;
+    const DURATION = 6000; // 6 seconds
+
+    function drawFrame(timestamp) {
+      requestAnimationFrame(drawFrame);
+
+      // Slight transparent fill to get a trailing effect
+      ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      if (!animating || !logo.complete) return;
+
+      const elapsed = timestamp - startTime;
+      if (elapsed > DURATION) {
+        animating = false;
+        // Hard clear at the end
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        return;
+      }
+
+      const t = elapsed / 1000; // in seconds
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+
+      // Background flashes red/blue
+      const flash = (Math.sin(t * 6) + 1) / 2; // 0..1
+      const grad = ctx.createRadialGradient(
+        centerX, centerY, 0,
+        centerX, centerY, Math.max(canvas.width, canvas.height)
+      );
+      grad.addColorStop(0, `rgba(255, 255, 255, ${0.3 + 0.3 * flash})`);
+      grad.addColorStop(0.4, `rgba(0, 38, 84, ${0.8})`);   // dark blue
+      grad.addColorStop(1, `rgba(255, 0, 0, ${0.8})`);     // red
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Spinning + pulsing logo
+      const baseSize = Math.min(canvas.width, canvas.height) * 0.35;
+      const pulse = 0.15 * Math.sin(t * 4); // -0.15 .. 0.15
+      const size = baseSize * (1 + pulse);
+
+      const angle = t * 2 * Math.PI; // one full rotation per second
+
+      ctx.save();
+      ctx.translate(centerX, centerY);
+      ctx.rotate(angle);
+      ctx.drawImage(
+        logo,
+        -size / 2,
+        -size / 2,
+        size,
+        size
+      );
+      ctx.restore();
+
+      // "GOAL!" text
+      const fontSize = Math.min(canvas.width, canvas.height) * 0.12;
+      ctx.font = `bold ${fontSize}px system-ui, -apple-system, sans-serif`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "top";
+      ctx.fillStyle = "white";
+      ctx.strokeStyle = "black";
+      ctx.lineWidth = fontSize * 0.06;
+
+      const text = "GOAL!";
+      const textY = centerY + size * 0.6;
+
+      ctx.strokeText(text, centerX, textY);
+      ctx.fillText(text, centerX, textY);
+    }
+
+    requestAnimationFrame(drawFrame);
+
+    function triggerGoal(team, scorer, number) {
+      // You can customize behavior based on team/scorer if you want
+      startTime = performance.now();
+      animating = true;
+    }
+
+    // Listen for messages from the main website
+    window.addEventListener("message", (event) => {
+      const data = event.data || {};
+      if (data.type === "GOAL" && data.team === "MTL") {
+        triggerGoal(data.team, data.scorer, data.number);
+      }
+    });
+  </script>
+</body>
+</html>

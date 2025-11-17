@@ -7,6 +7,7 @@ import LEDControllerTest from './pages/LEDControllerTest.tsx';
 import NhlPage from './pages/NhlPage.tsx';
 import { SoundProvider } from './providers/SoundProvider.tsx';
 import BetsEditor from './pages/BetsEditor.tsx';
+import GoalProjection from './pages/GoalProjection.tsx';
 
  const router = createBrowserRouter([
       {
@@ -27,6 +28,10 @@ import BetsEditor from './pages/BetsEditor.tsx';
           }
         ],
       },
+      {
+            path: '/goal-projection', // This makes Home the default child route for '/'
+            element: <GoalProjection />,
+          }
       // You can add more top-level routes here
     ]);
 
