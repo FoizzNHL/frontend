@@ -45,7 +45,6 @@ export default function NhlPage() {
       setGoals(null);
       const s = await loadGameScore();
       if (!s?.id) return;
-      updateInBettweenScoreFace();
       const g = await getGameGoals(s.id);
       setGoals(g);
     } catch (e: any) {
