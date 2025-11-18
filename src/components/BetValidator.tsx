@@ -16,7 +16,7 @@ type BetLeg =
   | { type: "first_team_to_score"; teamTri: string };
 
 type Bet =
-  | { id: string; type: "parlay"; legs: BetLeg[]; stake?: number }
+  | { id: string; type: "parlay"; legs: BetLeg[]; stake?: number, potentialReturn?: number }
   | never;
 
 type BetsFile = { bets: Bet[] };
@@ -126,6 +126,31 @@ function validateLeg(
     }
 
     case "total": {
+      // ✅ While game is NOT final -> always PENDING (for both over & under)
+      if (!isFinal && !isOff) {
+        if (leg.teamTri) {
+          const teamAbbr = leg.teamTri.toUpperCase();
+          const teamScore =
+            score?.home?.abbr === teamAbbr
+              ? home
+              : score?.away?.abbr === teamAbbr
+              ? away
+              : 0;
+
+          result = {
+            status: "PENDING",
+            note: `Live ${teamAbbr}: ${teamScore} vs line ${leg.line}`,
+          };
+        } else {
+          result = {
+            status: "PENDING",
+            note: `Live total: ${total} vs line ${leg.line}`,
+          };
+        }
+        break;
+      }
+
+      // 🧾 Game is final (or OFF) -> settle bet
       if (leg.teamTri) {
         const teamAbbr = leg.teamTri.toUpperCase();
         const teamScore =
@@ -134,22 +159,21 @@ function validateLeg(
             : score?.away?.abbr === teamAbbr
             ? away
             : 0;
-            
 
-          const won =
-            leg.pick === "over" ? teamScore > leg.line : teamScore < leg.line;
-          result = {
-            status: won ? "WON" : "LOST",
-            note: `Final ${teamAbbr}: ${teamScore} vs line ${leg.line}`,
-          };
-        
+        const won =
+          leg.pick === "over" ? teamScore > leg.line : teamScore < leg.line;
+
+        result = {
+          status: won ? "WON" : "LOST",
+          note: `Final ${teamAbbr}: ${teamScore} vs line ${leg.line}`,
+        };
       } else {
-          const won = leg.pick === "over" ? total > leg.line : total < leg.line;
-          result = {
-            status: won ? "WON" : "LOST",
-            note: `Final total: ${total} vs line ${leg.line}`,
-          };
-        
+        const won = leg.pick === "over" ? total > leg.line : total < leg.line;
+
+        result = {
+          status: won ? "WON" : "LOST",
+          note: `Final total: ${total} vs line ${leg.line}`,
+        };
       }
       break;
     }
@@ -295,9 +319,9 @@ export function BetValidator({
               <span className="text-sm font-semibold text-gray-800">
                 {bet.id}
               </span>
-              {typeof bet.stake !== "undefined" && (
+              {typeof bet.potentialReturn !== "undefined" && (
                 <span className="text-xs text-gray-500">
-                  Stake: {bet.stake}
+                  Return: {bet.potentialReturn}$
                 </span>
               )}
             </div>
