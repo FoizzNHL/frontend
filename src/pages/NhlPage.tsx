@@ -45,6 +45,7 @@ export default function NhlPage() {
       setGoals(null);
       const s = await loadGameScore();
       if (!s?.id) return;
+      updateInBettweenScoreFace();
       const g = await getGameGoals(s.id);
       setGoals(g);
     } catch (e: any) {
@@ -97,6 +98,53 @@ export default function NhlPage() {
 
     loadGameScore();
     setGoals({...goals, goals: allGoals});
+
+    setTimeout(() => {
+      updateInBettweenScoreFace()
+    }, 3000);
+  };
+
+  const updateInBettweenScoreFace = () => {
+    if (!score) return;
+
+    // Identify MTL side
+    const isMtlHome = score.home.abbr === MTL_ABBR;
+    const isMtlAway = score.away.abbr === MTL_ABBR;
+
+    if (!isMtlHome && !isMtlAway) return; // no MTL, nothing to show
+
+    // Extract scores
+    const mtlScore = isMtlHome ? score.home.score : score.away.score;
+    const oppScore = isMtlHome ? score.away.score : score.home.score;
+
+    // Colors
+    const mtlColor = getTeamColor(MTL_ABBR);
+    const oppAbbr = isMtlHome ? score.away.abbr : score.home.abbr;
+    const oppColor = getTeamColor(oppAbbr);
+
+    // Determine Face
+    let face = "stressed";
+    let faceColor = mtlColor.primary;
+    let faceBg = mtlColor.secondary;
+
+    if (mtlScore > oppScore) {
+      // Winning
+      face = "happy";
+      faceColor = mtlColor.primary;
+      faceBg = mtlColor.secondary;
+    } else if (mtlScore < oppScore) {
+      // Losing
+      face = "sad";
+      // use opponent colors when losing
+      faceColor = oppColor.primary;
+      faceBg = oppColor.secondary;
+    }
+
+    send({
+      face,
+      color: hexToRgb(faceColor),
+      bg: hexToRgb(faceBg),
+    });
   };
 
   useGoalWatcher(gameId, onNewGoal, {
