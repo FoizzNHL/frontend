@@ -80,7 +80,7 @@ export default function NhlPage() {
       send({
         animation: "habs_goal",
         player_number: goal.scorer.number,
-        duration: 15,
+        duration: 30,
       });
 
       if(!disableSound) sound.play("horn");
@@ -101,7 +101,7 @@ export default function NhlPage() {
 
     setTimeout(() => {
       updateInBettweenScoreFace()
-    }, 3000);
+    }, 30000);
   };
 
   const updateInBettweenScoreFace = () => {
