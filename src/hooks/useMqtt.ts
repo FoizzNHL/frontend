@@ -1,8 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import mqtt from 'mqtt';
 import type { IClientOptions, MqttClient } from 'mqtt';
+import type { LedCommand } from '../types/types';
 
-export type Acknowledgement = { ok: boolean; action?: string; error?: string; ts?: number; ackId?: string; [k: string]: any };
+export type Acknowledgement = {
+  ok: boolean;
+  action?: string;
+  error?: string;
+  ts?: number;
+  ackId?: string;
+  [k: string]: unknown; // More type-safe than 'any' as it requires type checking before use
+};
 
 export function useMqtt(opts?: { host?: string; port?: number; cmdTopic?: string; ackTopic?: string; }) {
   const lightHost = import.meta.env.VITE_LIGHT_HOST;
@@ -15,7 +23,7 @@ export function useMqtt(opts?: { host?: string; port?: number; cmdTopic?: string
 
   useEffect(() => {
     // const url = `ws://${host}:${port}`;
-    const url = `wss://lights.mitradev.com/mqtt`;
+    const url = `wss://${import.meta.env.VITE_LIGHT_URL}/mqtt`;
     const options: IClientOptions = { reconnectPeriod: 2000, clean: true };
     const c = mqtt.connect(url, options);
     clientRef.current = c;
@@ -37,6 +45,6 @@ export function useMqtt(opts?: { host?: string; port?: number; cmdTopic?: string
   }, [host, port, ackTopic]);
 
   const publish = (topic: string, payload: string) => clientRef.current?.publish(topic, payload);
-  const publishJson = (topic: string, obj: any) => publish(topic, JSON.stringify(obj));
+  const publishJson = (topic: string, obj: LedCommand) => publish(topic, JSON.stringify(obj));
   return { connected, client, publish, publishJson, cmdTopic, ackTopic, acks };
 }

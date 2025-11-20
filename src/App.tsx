@@ -46,7 +46,7 @@ function App() {
                       "px-3 py-2 rounded-xl font-semibold transition shadow-sm",
                       "ring-1 ring-inset",
                       isActive(path)
-                        ? "bg-gradient-to-r from-[#af1e2d] to-[#002f6c] ring-white/20"
+                        ? "bg-linear-to-r from-[#af1e2d] to-[#002f6c] ring-white/20"
                         : "bg-white/5 hover:bg-white/10 ring-white/10"
                     ].join(" ")}
                   >
@@ -86,7 +86,7 @@ function App() {
                       "block px-3 py-2 rounded-xl font-semibold transition shadow-sm",
                       "ring-1 ring-inset",
                       isActive(path)
-                        ? "bg-gradient-to-r from-[#af1e2d] to-[#002f6c] ring-white/20"
+                        ? "bg-linear-to-r from-[#af1e2d] to-[#002f6c] ring-white/20"
                         : "bg-white/5 hover:bg-white/10 ring-white/10"
                     ].join(" ")}
                   >

@@ -41,6 +41,7 @@ createRoot(document.getElementById('root')!).render(
       sounds={{
         horn: "/sounds/horn.mp3",
         buuu: "/sounds/buuu.mp3",
+        startup: "/sounds/startup.mp3",
       }}
     >
     <RouterProvider router={router} />

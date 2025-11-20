@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getGameForTeam, getGameGoals } from "../lib/nhl/api";
 import { formatDate, hexToRgb } from "../lib/utils";
 import { useSound } from "../hooks/useSound";
@@ -9,31 +9,67 @@ import { BetValidator } from "../components/BetValidator";
 import ScoreCard from "../components/ScoreCard";
 import { MTL_ABBR } from "../lib/constants";
 
+import { ConnectionStatusBadge } from "../components/ConnectionStatusBadge";
+import { ControlPanel } from "../components/ControlPanel";
+import { GoalsPanel } from "../components/GoalsPanel";
+import type {
+  LedCommand,
+  NhlGoal,
+  NhlGoalsResponse,
+  NhlScore,
+} from "../types/types";
+
+const PROJECTION_URL = "/goal-projection.html";
+const TEAM_STORAGE_KEY = "nhl.selectedTeam";
+const DELAY_STORAGE_KEY = "nhl.delay";
+
 export default function NhlPage() {
   const today = new Date();
-  const sound = useSound();
-  const PROJECTION_URL = "/goal-projection.html"; // or your route
+  const [team, setTeam] = useState<string>(() => {
+    if (typeof window === "undefined") return MTL_ABBR;
 
-  const [team] = useState(MTL_ABBR);
+    try {
+      const stored = window.localStorage.getItem(TEAM_STORAGE_KEY);
+      return stored || MTL_ABBR; // fallback to MTL
+    } catch {
+      return MTL_ABBR;
+    }
+  });
+
   const [disableSound] = useState<boolean>(false);
   const [date, setDate] = useState<string>(formatDate(today, "yy-mm-dd"));
+  const [goalDelaySeconds, setGoalDelaySeconds] = useState<number>(() => {
+    if (typeof window === "undefined") return 25;
+
+    const storedDelay = window.localStorage.getItem(DELAY_STORAGE_KEY);
+    if(!storedDelay) return 25;
+
+    try {
+      const stored = parseInt(storedDelay);
+      return stored;
+    } catch {
+      return 25;
+    }
+  });
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-   const [goalDelaySeconds, setGoalDelaySeconds] = useState<number>(25);
 
-  const [score, setScore] = useState<any | null>(null);
-  const [goals, setGoals] = useState<any | null>(null);
+  const [score, setScore] = useState<NhlScore | null>(null);
+  const [goals, setGoals] = useState<NhlGoalsResponse | null>(null);
 
-  const { connected, publishJson, cmdTopic, acks } = useMqtt();
+  const sound = useSound();
+  const { connected, publishJson, cmdTopic } = useMqtt();
 
-  const send = (cmd) => publishJson(cmdTopic, cmd);
-
+  const send = (cmd: LedCommand) => {
+    console.log(cmd);
+    publishJson(cmdTopic, cmd);
+  }
   const gameId = useMemo(() => score?.id, [score]);
 
-  async function loadGameScore(){
-    const s = await getGameForTeam(team, date || undefined);
+  async function loadGameScore(selectedTeam = team, selectedDate = date) {
+    const s = await getGameForTeam(selectedTeam, selectedDate || undefined);
     setScore(s);
-
     return s;
   }
 
@@ -43,12 +79,20 @@ export default function NhlPage() {
       setError(null);
       setScore(null);
       setGoals(null);
+
       const s = await loadGameScore();
       if (!s?.id) return;
+
       const g = await getGameGoals(s.id);
       setGoals(g);
-    } catch (e: any) {
-      setError(e?.message || String(e));
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        setError(e.message);
+      } else if (typeof e === "string") {
+        setError(e);
+      } else {
+        setError("An unexpected error occurred");
+      }
     } finally {
       setLoading(false);
     }
@@ -56,13 +100,33 @@ export default function NhlPage() {
 
   useEffect(() => {
     load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onNewGoal = (goal: any, allGoals: any) => {
-    scheduleGoalEffects(goal, allGoals);
-  };
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(TEAM_STORAGE_KEY, team);
+    } catch {
+      // ignore storage errors
+    }
+  }, [team]);
 
-  const scheduleGoalEffects = (goal: any, allGoals: any) => {
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(DELAY_STORAGE_KEY, goalDelaySeconds.toString());
+    } catch {
+      // ignore storage errors
+    }
+  }, [goalDelaySeconds]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      updateInBetweenScoreFace();
+    }, 30000);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [score])
+
+  const scheduleGoalEffects = (goal: NhlGoal, allGoals: NhlGoal[]) => {
     const delayMs = Math.max(0, goalDelaySeconds) * 1000;
 
     if (delayMs === 0) {
@@ -74,67 +138,68 @@ export default function NhlPage() {
     }
   };
 
-  const triggerGoalEffects = (goal: any, allGoals: any) => {
-    if (goal?.scorer?.team == team) {
+  const triggerGoalEffects = (goal: NhlGoal, allGoals: NhlGoal[]) => {
+    if (goal?.scorer?.team === team) {
+      // Habs goal animation
       send({
         animation: "habs_goal",
-        player_number: goal.scorer.number,
-        duration: 30,
-      });
+        player_number: goal.scorer?.number,
+        duration: 20,
+      } as LedCommand);
 
-      if(!disableSound) sound.play("horn");
-
-    } else {
+      if (!disableSound) sound.play("horn");
+    } else if (goal?.scorer?.team) {
+      // Opponent goal → sad face with their colors
       const enemyColor = getTeamColor(goal.scorer.team);
       send({
         face: "sad",
         color: hexToRgb(enemyColor.primary),
         bg: hexToRgb(enemyColor.secondary),
-      });
+      } as LedCommand);
 
-      if(!disableSound) sound.play("buuu");
+      if (!disableSound) sound.play("buuu");
     }
 
+    // Refresh score
     loadGameScore();
-    setGoals({...goals, goals: allGoals});
 
-    setTimeout(() => {
-      updateInBettweenScoreFace()
-    }, 30000);
+    // Safely update goals list
+    setGoals((prev) =>
+      prev
+        ? {
+            ...prev,
+            goals: allGoals,
+          }
+        : prev
+    );
   };
 
-  const updateInBettweenScoreFace = () => {
+  const updateInBetweenScoreFace = () => {
     if (!score) return;
+    if(score.state == 'FUT') return;
 
-    // Identify MTL side
-    const isMtlHome = score.home.abbr === MTL_ABBR;
-    const isMtlAway = score.away.abbr === MTL_ABBR;
+    const isMtlHome = score.home.abbr === team;
+    const isMtlAway = score.away.abbr === team;
 
-    if (!isMtlHome && !isMtlAway) return; // no MTL, nothing to show
+    if (!isMtlHome && !isMtlAway) return;
 
-    // Extract scores
     const mtlScore = isMtlHome ? score.home.score : score.away.score;
     const oppScore = isMtlHome ? score.away.score : score.home.score;
 
-    // Colors
-    const mtlColor = getTeamColor(MTL_ABBR);
+    const mtlColor = getTeamColor(team);
     const oppAbbr = isMtlHome ? score.away.abbr : score.home.abbr;
     const oppColor = getTeamColor(oppAbbr);
 
-    // Determine Face
-    let face = "stressed";
+    let face: "happy" | "sad" | "stressed" = "stressed";
     let faceColor = mtlColor.primary;
     let faceBg = mtlColor.secondary;
 
     if (mtlScore > oppScore) {
-      // Winning
       face = "happy";
       faceColor = mtlColor.primary;
       faceBg = mtlColor.secondary;
     } else if (mtlScore < oppScore) {
-      // Losing
       face = "sad";
-      // use opponent colors when losing
       faceColor = oppColor.primary;
       faceBg = oppColor.secondary;
     }
@@ -143,118 +208,98 @@ export default function NhlPage() {
       face,
       color: hexToRgb(faceColor),
       bg: hexToRgb(faceBg),
-    });
+    } as LedCommand);
   };
 
-  useGoalWatcher(gameId, onNewGoal, {
-    pollMs: 4000, // poll every 4s
-    fireDelayMs: 2500, // optional delay to sync with stream
+  const onNewGoal = (goal: NhlGoal, allGoals: NhlGoal[]) => {
+    scheduleGoalEffects(goal, allGoals);
+  };
+
+  const onGameStart = (state: string, data: NhlGoalsResponse) => {
+    if(state === 'FUT'){
+      send({
+        face: "happy",
+        color: hexToRgb(getTeamColor(team).primary),
+        bg: hexToRgb(getTeamColor(team).secondary),
+      } as LedCommand); 
+    }
+
+    sound.play('startup');
+  };
+
+  useGoalWatcher(gameId, onNewGoal, onGameStart, {
+    pollMs: 4000,
+    fireDelayMs: 2500,
     emitExistingOnStart: false,
+    persistAcrossSessions: true
   });
 
   function simulateNewGoal() {
-    // if (!goals) return;
-    // const fake = {
-    //   ...goals.goals[1],
-    //   timeInPeriod: "10:00",
-    //   fake: true,
-    // };
-    // onNewGoal(fake, [...goals.goals, fake]); // your watcher callback
+    // triggerGoalEffects({
+    //   id: 1,
+    //   gamePk: 1,
+    //   scorer: {
+    //     id: 1,
+    //     number:13,
+    //     fullName: "Cole Caulfield",
+    //     team: team,
+    //   },
+    // } as NhlGoal, []);
 
-    openGoalAnimation();
-  }
-
-  const openGoalAnimation = () => {
-      const goalWindow = window.open(
-        PROJECTION_URL,
-        "projector",
-        "width=1920,height=1080"
-    );
-
-    // give the window time to load
-    setTimeout(() => {
-        goalWindow?.postMessage({ type: "GOAL", team: "MTL" }, "*");
-    }, 500);
+    onGameStart('FUT', {} as NhlGoalsResponse);
   }
 
   return (
-    <div className="mx-auto max-w-3xl p-6 space-y-4">
-      <div className="absolute right-2 top-2">
-        <div
-          className={`px-4 py-2 rounded-full border ${
-            connected
-              ? "bg-emerald-400/10 text-emerald-300 border-emerald-300/30"
-              : "bg-rose-400/10 text-rose-300 border-rose-300/30"
-          }`}
-        >
-          <span
-            className={`inline-block w-2 h-2 rounded-full mr-2 ${
-              connected ? "bg-emerald-400" : "bg-rose-400"
-            } animate-pulse`}
-          />
-          {connected ? "Connected" : "Disconnected"}
+    <div className="mx-auto max-w-5xl p-6 space-y-5">
+      {/* Header / status bar */}
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold text-white-900">NHL Goal Watcher</h1>
+          <p className="text-sm text-white-500">
+            Live goals, LEDs, bets & projections for your team.
+          </p>
         </div>
+
+        <ConnectionStatusBadge connected={connected} />
       </div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          load();
-        }}
-        className="flex flex-wrap items-end gap-4 bg-white/70 backdrop-blur-md border border-gray-200 rounded-2xl p-4 shadow-md"
-      >
-        <div>
-          <label className="block text-xs text-gray-600 mb-1">
-            Date (YYYY-MM-DD)
-          </label>
-          <input
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="border border-gray-300 rounded-md px-3 py-2 text-black bg-white/80 shadow-inner focus:ring-2 focus:ring-blue-400"
-            placeholder="2025-11-06"
-          />
-        </div>
-        <button
-          type="submit"
-          disabled={loading}
-          className="h-10 px-5 rounded-lg bg-linear-to-r from-blue-600 to-blue-500 text-white font-medium shadow-md hover:opacity-90 transition disabled:opacity-50"
-        >
-          {loading ? "Loading…" : "Load Game"}
-        </button>
-        <div>
-          <label className="block text-xs text-gray-600 mb-1">
-            Goal delay (seconds before animation)
-          </label>
-          <input
-            type="number"
-            min={0}
-            step={0.5}
-            value={goalDelaySeconds}
-            onChange={(e) =>
-              setGoalDelaySeconds(
-                Math.max(0, Number(e.target.value) || 0)
-              )
-            }
-            className="border border-gray-300 rounded-md px-3 py-2 text-black bg-white/80 shadow-inner focus:ring-2 focus:ring-blue-400 w-32"
-          />
-        </div>
-      </form>
+
+      {/* Controls */}
+      <ControlPanel
+        team={team}
+        onTeamChange={setTeam}
+        date={date}
+        onDateChange={setDate}
+        loading={loading}
+        onReload={load}
+        goalDelaySeconds={goalDelaySeconds}
+        onGoalDelayChange={setGoalDelaySeconds}
+      />
 
       {error && (
-        <div className="rounded-xl border p-4 bg-red-100 text-red-700 shadow-sm">
+        <div className="rounded-xl border p-4 bg-red-50 text-red-700 shadow-sm text-sm">
           {error}
         </div>
       )}
 
-      <button
-        className="h-10 px-5 rounded-lg bg-linear-to-r from-blue-600 to-blue-500 text-white font-medium shadow-md hover:opacity-90 transition disabled:opacity-50"
-        onClick={simulateNewGoal}
-      >
-        Simulate Goal
-      </button>
+      <div className="flex flex-wrap gap-3">
+        <button
+          className="h-10 px-5 rounded-lg bg-linear-to-r from-blue-600 to-blue-500 text-white font-medium shadow-md hover:opacity-90 transition disabled:opacity-50 cursor-pointer"
+          onClick={simulateNewGoal}
+        >
+          Simulate Goal
+        </button>
 
-      {score && !score.noGame && (
-        <ScoreCard score={score}/>
-      )}
+        <button
+          type="button"
+          onClick={updateInBetweenScoreFace}
+          className="h-10 px-4 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm shadow-sm hover:bg-gray-50 transition cursor-pointer"
+        >
+          Refresh In-Between Face
+        </button>
+      </div>
+
+      {/* Score card */}
+      {score && !score.noGame && <ScoreCard score={score} />}
 
       {score?.noGame && (
         <div className="p-4 rounded-xl border bg-white/70 backdrop-blur-md shadow-sm text-gray-700">
@@ -262,148 +307,11 @@ export default function NhlPage() {
         </div>
       )}
 
-      {gameId && goals && (
-        <div className="mt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="rounded-2xl border border-green-300 bg-gradient-to-b from-green-50 via-white/90 to-green-100 backdrop-blur-md shadow-md p-4">
-              <h3 className="text-lg font-semibold text-green-800 mb-3 text-center">
-                {goals.home?.abbr === team ? goals.home.abbr : goals.away.abbr}{" "}
-                Goals
-              </h3>
-
-              <div className="flex flex-col gap-3 max-h-[70vh] overflow-y-auto pr-2">
-                {goals.goals
-                  .filter((g: any) => g?.scorer?.team === team)
-                  .map((goal: any, idx: number) => (
-                    <div
-                      key={idx}
-                      className="relative rounded-xl border border-green-200 bg-white/70 p-3 shadow-sm hover:shadow-md transition"
-                    >
-                      <div className="flex items-center gap-3">
-                        {goal.scorer?.headshot ? (
-                          <img
-                            src={goal.scorer.headshot}
-                            alt={goal.scorer.fullName}
-                            className="w-12 h-12 rounded-full border border-green-200 shadow-sm object-cover"
-                          />
-                        ) : (
-                          <div className="w-12 h-12 rounded-full bg-green-200 flex items-center justify-center text-green-800 font-bold">
-                            {goal.scorer?.number ?? "?"}
-                          </div>
-                        )}
-
-                        <div className="flex-1">
-                          <div className="text-sm font-semibold text-gray-800">
-                            {goal.scorer?.fullName}{" "}
-                            {goal.scorer?.number && (
-                              <span className="text-gray-500">
-                                #{goal.scorer.number}
-                              </span>
-                            )}
-                          </div>
-                          <div className="text-xs text-gray-600">
-                            P{goal.period ?? "?"} –{" "}
-                            {goal.timeInPeriod ?? "--:--"}{" "}
-                            {goal.strength && (
-                              <span className="ml-1 text-emerald-700 font-medium">
-                                ({goal.strength})
-                              </span>
-                            )}
-                          </div>
-                          <div className="text-xs text-gray-500 mt-1">
-                            Score: {goal.awayScore} – {goal.homeScore}
-                          </div>
-                        </div>
-
-                        {goal.highlight?.url && (
-                          <a
-                            href={goal.highlight.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full border border-green-200 hover:bg-green-200 transition"
-                          >
-                            ▶ Watch
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-              </div>
-            </div>
-
-            {/* ====== RIGHT COLUMN: Opponent Goals ====== */}
-            <div className="rounded-2xl border border-yellow-300 bg-gradient-to-b from-yellow-50 via-white/90 to-yellow-100 backdrop-blur-md shadow-md p-4">
-              <h3 className="text-lg font-semibold text-yellow-800 mb-3 text-center">
-                {goals.home?.abbr === team ? goals.away.abbr : goals.home.abbr}{" "}
-                Goals
-              </h3>
-
-              <div className="flex flex-col gap-3 max-h-[70vh] overflow-y-auto pr-2">
-                {goals.goals
-                  .filter((g: any) => g.scorer.team !== team)
-                  .map((goal: any, idx: number) => (
-                    <div
-                      key={idx}
-                      className="relative rounded-xl border border-yellow-200 bg-white/70 p-3 shadow-sm hover:shadow-md transition"
-                    >
-                      <div className="flex items-center gap-3">
-                        {goal.scorer?.headshot ? (
-                          <img
-                            src={goal.scorer.headshot}
-                            alt={goal.scorer.fullName}
-                            className="w-12 h-12 rounded-full border border-yellow-200 shadow-sm object-cover"
-                          />
-                        ) : (
-                          <div className="w-12 h-12 rounded-full bg-yellow-200 flex items-center justify-center text-yellow-800 font-bold">
-                            {goal.scorer?.number ?? "?"}
-                          </div>
-                        )}
-
-                        <div className="flex-1">
-                          <div className="text-sm font-semibold text-gray-800">
-                            {goal.scorer?.fullName}{" "}
-                            {goal.scorer?.number && (
-                              <span className="text-gray-500">
-                                #{goal.scorer.number}
-                              </span>
-                            )}
-                          </div>
-                          <div className="text-xs text-gray-600">
-                            P{goal.period ?? "?"} –{" "}
-                            {goal.timeInPeriod ?? "--:--"}{" "}
-                            {goal.strength && (
-                              <span className="ml-1 text-yellow-700 font-medium">
-                                ({goal.strength})
-                              </span>
-                            )}
-                          </div>
-                          <div className="text-xs text-gray-500 mt-1">
-                            Score: {goal.awayScore} – {goal.homeScore}
-                          </div>
-                        </div>
-
-                        {goal.highlight?.url && (
-                          <a
-                            href={goal.highlight.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full border border-yellow-200 hover:bg-yellow-200 transition"
-                          >
-                            ▶ Watch
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
+      {/* Goals + Bets */}
       {gameId && goals && (
         <>
-          {/* ... your existing Goals UI ... */}
+          <GoalsPanel goals={goals} team={team} />
+
           <div className="mt-8">
             <BetValidator score={score} goals={goals} />
           </div>

@@ -1,6 +1,7 @@
 import { getTeamColor } from "../lib/nhl/colors";
+import type { NhlScore } from "../types/types";
 
-export default function ScoreCard({ score }) {
+export default function ScoreCard({ score }: {score: NhlScore}) {
   const awayColor = getTeamColor(score.away?.abbr);
   const homeColor = getTeamColor(score.home?.abbr);
 

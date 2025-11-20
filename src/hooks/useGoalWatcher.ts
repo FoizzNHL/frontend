@@ -1,13 +1,27 @@
 // src/hooks/useGoalWatcher.ts
 import { useEffect, useRef } from "react";
-import { getGameGoals } from "../lib/nhl/api";
+import { getGameForTeam, getGameGoals } from "../lib/nhl/api";
+import type {
+  NhlGoal,
+  NhlGoalsResponse,
+  NhlGoalScorer,
+  NhlScore,
+} from "../types/types";
+
+const STORAGE_KEY = "goalWatcher.seenGoals";
+
+type SeenGoalsStore = Record<string, string[]>;
+
+type GoalWithMeta = NhlGoal & {
+  id?: string | number;
+  gamePk?: string | number;
+  scorer?: NhlGoalScorer & { id?: string | number };
+};
 
 /** Build a stable goal id even if the API doesn't give one */
-function goalKey(g: any): string {
-  // Prefer an explicit id if the feed has it
-  if (g.id) return String(g.id);
+function goalKey(g: GoalWithMeta): string {
+  if (g.id != null) return String(g.id);
 
-  // Fallback: compose a deterministic key from typical fields
   const parts = [
     g.gamePk ?? "",
     g.period ?? "",
@@ -17,13 +31,59 @@ function goalKey(g: any): string {
     g.awayScore ?? "",
     g.homeScore ?? "",
   ];
+
   return parts.join("|");
 }
 
 /** Return all goals present in `next` that weren't in `prev` (by key) */
-function diffNewGoals(prevList: any[] = [], nextList: any[] = []) {
+function diffNewGoals(
+  prevList: GoalWithMeta[] = [],
+  nextList: GoalWithMeta[] = []
+): GoalWithMeta[] {
   const prevKeys = new Set(prevList.map(goalKey));
   return nextList.filter((g) => !prevKeys.has(goalKey(g)));
+}
+
+function safeLoadStore(): SeenGoalsStore {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    if (parsed && typeof parsed === "object") {
+      return parsed as SeenGoalsStore;
+    }
+    return {};
+  } catch {
+    return {};
+  }
+}
+
+function safeSaveStore(store: SeenGoalsStore): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+  } catch {
+    // ignore storage failures
+  }
+}
+
+function loadSeenKeys(gameId: string | number): Set<string> {
+  const store = safeLoadStore();
+  const key = String(gameId);
+  const arr = store[key] ?? [];
+  return new Set(arr);
+}
+
+function saveSeenKeys(gameId: string | number, goals: NhlGoal[]): void {
+  const store = safeLoadStore();
+  const key = String(gameId);
+  const existing = new Set(store[key] ?? []);
+  for (const g of goals) {
+    existing.add(goalKey(g as GoalWithMeta));
+  }
+  store[key] = Array.from(existing);
+  safeSaveStore(store);
 }
 
 export type GoalWatcherOptions = {
@@ -33,44 +93,103 @@ export type GoalWatcherOptions = {
   fireDelayMs?: number;
   /** If true, emit *all* current goals once the watcher starts */
   emitExistingOnStart?: boolean;
+  /** If true, remember processed goals across reloads (default: true) */
+  persistAcrossSessions?: boolean;
+  onGameStart?: (gameState: string, data: NhlGoalsResponse) => void;
 };
 
 /**
  * Watch a game's goals and call `onNewGoal` whenever a new goal appears.
- * Cleans up automatically when `gameId` or component changes.
+ * Persists which goals were already emitted so we don't replay animations
+ * on refresh / navigation.
  */
 export function useGoalWatcher(
   gameId: number | string | undefined | null,
-  onNewGoal: (goal: any, allGoals: any[]) => void,
+  onNewGoal: (goal: NhlGoal, allGoals: NhlGoal[]) => void,
+  onGameStart?: (gameState: string, data: NhlGoalsResponse) => void,
   opts: GoalWatcherOptions = {}
-) {
-  const { pollMs = 4000, fireDelayMs = 0, emitExistingOnStart = false } = opts;
+): void {
+  const {
+    pollMs = 4000,
+    fireDelayMs = 0,
+    emitExistingOnStart = false,
+    persistAcrossSessions = true,
+  } = opts;
 
-  // Keep previous goal list and a live callback ref (avoids stale closures)
-  const prevGoalsRef = useRef<any[] | null>(null);
+  const prevGoalsRef = useRef<NhlGoal[] | null>(null);
+  const prevGameStateRef = useRef<string | null>(null);
+
   const cbRef = useRef(onNewGoal);
   cbRef.current = onNewGoal;
+
+  const gameStartCbRef = useRef<GoalWatcherOptions["onGameStart"]>(null);
+  gameStartCbRef.current = onGameStart;
 
   useEffect(() => {
     if (!gameId) return;
 
     let cancelled = false;
-    let timer: any = null;
+    let timer: number | undefined;
 
-    async function tick(initial = false) {
+    async function tick(initial: boolean): Promise<void> {
       try {
-        const data = await getGameGoals(gameId);
-        const nextGoals: any[] = data?.goals ?? [];
+        const data: NhlGoalsResponse = await getGameGoals(gameId as string | number);
+        const nextGoals: NhlGoal[] = data?.goals ?? [];
 
-        const prev = prevGoalsRef.current ?? [];
-        let newOnes = diffNewGoals(prev, nextGoals);
+        let prev = prevGoalsRef.current;
 
-        // Optionally emit everything on first run (useful if you want to rebuild state)
+        // First run for this game in this mount
+        if (prev == null) {
+          if (persistAcrossSessions) {
+            const seenKeys = loadSeenKeys(gameId  as string | number);
+            prev = nextGoals.filter((g) =>
+              seenKeys.has(goalKey(g as GoalWithMeta))
+            );
+          } else {
+            prev = [];
+          }
+        }
+
+        const gameScore = await getGameForTeam(gameId?.toString() || "");
+        const state: string | undefined = (gameScore as NhlScore).state;
+
+         if (state) {
+          const prevState = prevGameStateRef.current;
+          if (prevState === null) {
+            // first tick, just store it
+            prevGameStateRef.current = state;
+          } else if (prevState === "FUT" && state !== "FUT") {
+            prevGameStateRef.current = state;
+            const gameStartCb = gameStartCbRef.current;
+            if (!cancelled && gameStartCb) {
+              gameStartCb(state, data);
+            }
+          } else if (prevState !== state) {
+            // keep it up to date even if you only care about FUT->X
+            prevGameStateRef.current = state;
+          }
+        }
+
+        let newOnes = diffNewGoals(
+          prev as GoalWithMeta[],
+          nextGoals as GoalWithMeta[]
+        );
+
+        // If we explicitly want to emit all existing goals at start
         if (initial && emitExistingOnStart && nextGoals.length) {
-          newOnes = nextGoals;
+          newOnes = nextGoals as GoalWithMeta[];
+        }
+
+        if (initial && !emitExistingOnStart) {
+          newOnes = [];
         }
 
         prevGoalsRef.current = nextGoals;
+
+        // Persist updated seen goals (all that currently exist)
+        if (persistAcrossSessions) {
+          saveSeenKeys(gameId as string | number, nextGoals);
+        }
 
         // Fire callbacks (optionally delayed)
         if (!cancelled && newOnes.length) {
@@ -82,27 +201,29 @@ export function useGoalWatcher(
           };
 
           if (fireDelayMs > 0) {
-            setTimeout(fire, fireDelayMs);
+            window.setTimeout(fire, fireDelayMs);
           } else {
             fire();
           }
         }
       } catch {
-        // Swallow errors here to keep polling; surface them where you fetch if needed
+        // keep polling even if one request fails
       } finally {
         if (!cancelled) {
-          timer = setTimeout(tick, pollMs);
+          timer = window.setTimeout(() => {
+            void tick(false);
+          }, pollMs);
         }
       }
     }
 
-    // Reset state when game changes and start polling
     prevGoalsRef.current = null;
-    tick(true);
+    prevGameStateRef.current = null;
+    void tick(true);
 
     return () => {
       cancelled = true;
-      if (timer) clearTimeout(timer);
+      if (timer !== undefined) window.clearTimeout(timer);
     };
-  }, [gameId, pollMs, fireDelayMs, emitExistingOnStart]);
+  }, [gameId, pollMs, fireDelayMs, emitExistingOnStart, persistAcrossSessions]);
 }

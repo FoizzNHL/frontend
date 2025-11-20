@@ -2,6 +2,7 @@ import { useState, type MouseEventHandler } from "react";
 import { useMqtt } from "../hooks/useMqtt";
 import { useSound } from "../hooks/useSound";
 import { hexToRgb } from "../lib/utils";
+import type { LedCommand } from "../types/types";
 
 export default function LEDControllerTest() {
   const sound = useSound();
@@ -14,7 +15,7 @@ export default function LEDControllerTest() {
 
   
 
-  const send = (cmd) => publishJson(cmdTopic, cmd);
+  const send = (cmd: LedCommand) => publishJson(cmdTopic, cmd);
 
   // Preset colors
   const colors = {
@@ -201,7 +202,7 @@ export default function LEDControllerTest() {
                       number: displayNumber,
                       color: hexToRgb(selectedColor),
                       bg: [0, 0, 0],
-                    })
+                    } as LedCommand)
                   }
                   className="
                     px-6 py-2 rounded-xl font-semibold
