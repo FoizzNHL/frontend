@@ -265,7 +265,6 @@ export function BetValidator({
       try {
         setErr(null);
         const json: BetsFile = await getBets();
-        console.log(json.bets);
        if (alive) setBets(json.bets);
         // if (alive) setBets(data.bets ?? []);
       } catch (e: any) {
