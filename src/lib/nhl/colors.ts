@@ -32,6 +32,7 @@ export const nhlTeamColors: Record<string, { primary: string; secondary: string 
   VGK: { primary: "#B4975A", secondary: "#333F48" }, // Golden Knights
   WSH: { primary: "#041E42", secondary: "#C8102E" }, // Capitals
   WPG: { primary: "#041E42", secondary: "#AC162C" }, // Jets
+  UTA: { primary: "#000000", secondary: "#7AB2E0" }, // Jets
 };
 
 // convenient getter

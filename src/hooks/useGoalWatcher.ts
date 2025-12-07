@@ -26,7 +26,6 @@ function goalKey(g: GoalWithMeta): string {
   const parts = [
     g.gamePk ?? "",
     g.period ?? "",
-    g.timeInPeriod ?? "",
     g.scorer?.team ?? "", // Team scoring the goal (won't change)
   ];
 
