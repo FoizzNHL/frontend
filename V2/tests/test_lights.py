@@ -3,7 +3,7 @@ import time
 from rpi_ws281x import PixelStrip, Color
 
 # ---------- CONFIG (adjust if needed) ----------
-LED_COUNT      = 15      # number of LEDs
+LED_COUNT      = 180      # number of LEDs
 LED_PIN        = 18      # GPIO pin (12 or 18 are most common)
 LED_CHANNEL    = 0
 LED_FREQ_HZ    = 800000
