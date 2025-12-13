@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import time
 
 import config
@@ -7,8 +6,11 @@ from log_utils import log
 from lcd_display import LcdDisplay
 from led_controller import LedController
 from backend_client import fetch_game_now
+
+# ✅ add this import
+from nhl_client import fetch_goals
+
 from button_controller import DelayController
-from matrix_number import display_number
 from nhl_team_colors import get_team_colors
 from emoji_state import pick_emoji_and_colors
 
@@ -24,10 +26,11 @@ def main():
     time.sleep(1)
     lcd.show_delay_only(delay_ctrl.get_delay())
 
-    last_mtl_score = None
     last_game_id = None
-    emoji_due_at = None                 # timestamp when we should show emoji
-    emoji_shown_for_game_id = None      # to show emoji once at game start
+    last_goal_count = None
+
+    emoji_due_at = None
+    emoji_shown_for_game_id = None
 
     try:
         while True:
@@ -40,12 +43,16 @@ def main():
                     log(f"No game: {msg}")
                     lcd.show_text("NO GAME", msg[:config.LCD_COLS])
                     lcd.show_delay_only(delay_ctrl.get_delay())
-                    last_mtl_score = None
+
                     last_game_id = None
+                    last_goal_count = None
+                    emoji_due_at = None
+                    emoji_shown_for_game_id = None
+
                     time.sleep(config.POLL_INTERVAL_SECONDS)
                     continue
 
-                # ------------- ERROR FROM BACKEND -------------
+                # ------------- ERROR -------------
                 if not data.get("ok"):
                     log("Backend returned ok=false")
                     lcd.show_text("BACKEND ERR", "ok=false")
@@ -56,77 +63,77 @@ def main():
                 home = data.get("home") or {}
                 away = data.get("away") or {}
 
-                home_score = home.get("score", 0)
-                away_score = away.get("score", 0)
+                home_score = int(home.get("score", 0))
+                away_score = int(away.get("score", 0))
 
                 line1 = f"{home.get('abbr')} {home_score}-{away_score} {away.get('abbr')}"
                 lcd.show_text(line1, "")
                 lcd.show_delay_only(delay_ctrl.get_delay())
                 log(f"Score Update: {line1}")
 
-                # Determine MTL score
-                if home.get("abbr") == config.TEAM_ABBR:
-                    mtl_score = home_score
-                else:
-                    mtl_score = away_score
-
                 game_id = data.get("id")
                 state = data.get("state")
 
-                # New game detected
+                # ------------- NEW GAME -------------
                 if game_id and game_id != last_game_id:
                     log(f"New game detected: {game_id}")
                     last_game_id = game_id
-                    last_goal_count = None  # reset for new game
+                    last_goal_count = None
+                    emoji_shown_for_game_id = None
+                    emoji_due_at = None
 
-                try:
-                    emoji, fg, bg = pick_emoji_and_colors(data, config.TEAM_ABBR)
-                    leds.matrix.emoji_animation(emoji, fg=fg, bg=bg, pulses=4)
-                    emoji_shown_for_game_id = game_id
-                    log(f"Emoji shown at game start: {emoji}")
-                except Exception as e:
-                    log(f"Emoji start display error: {e}")
+                # ------------- EMOJI AT GAME START (ONCE) -------------
+                if game_id and emoji_shown_for_game_id != game_id:
+                    try:
+                        emoji, efg, ebg = pick_emoji_and_colors(data, config.TEAM_ABBR)
+                        leds.matrix.emoji_animation(emoji, fg=efg, bg=ebg, pulses=4)
+                        emoji_shown_for_game_id = game_id
+                        log(f"Emoji shown at game start: {emoji}")
+                    except Exception as e:
+                        log(f"Emoji start display error: {e}")
 
-                # Only fetch goals if we actually have a game
-                if game_id:
+                # ------------- GOALS (JERSEY NUMBER) -------------
+                if game_id and state in ("LIVE", "CRIT", "PRE", "OFF"):
                     goals_payload = fetch_goals(game_id)
 
                     if goals_payload.get("ok"):
                         goals_list = goals_payload.get("goals") or []
                         goal_count = len(goals_list)
 
-                        # initialize baseline
+                        # baseline init
                         if last_goal_count is None:
                             last_goal_count = goal_count
 
-                        # new goal(s) detected
+                        # new goal(s)
                         elif goal_count > last_goal_count:
-                            new_goals = goals_list[last_goal_count:]  # in case 2 goals happened between polls
+                            new_goals = goals_list[last_goal_count:]
                             last_goal_count = goal_count
 
-                            # take the latest one (or loop them if you want)
                             last_goal = new_goals[-1]
                             scorer = last_goal.get("scorer") or {}
+
                             jersey = scorer.get("number")
+                            scorer_team = (scorer.get("team") or "").upper()
 
-                            log(f"GOAL DETECTED! scorer={scorer.get('fullName')} jersey={jersey}")
+                            log(f"GOAL DETECTED! scorer={scorer.get('fullName')} jersey={jersey} team={scorer_team}")
 
-                            # show jersey on matrix (only if it's 0-99)
-                            if jersey is not None:
+                            # show jersey number with scorer team colors
+                            if jersey is not None and scorer_team:
                                 try:
                                     jersey_int = int(jersey)
+                                    fg_color, bg_color = get_team_colors(scorer_team)
 
-                                    fg_color, bg_color = get_team_colors(team)
+                                    lcd.show_text("GOAL!!!", f"{scorer_team} #{jersey_int}")
 
-                                    lcd.show_text("GOAL!!!", f"#{jersey_int}")
-                                    leds.goal_matrix_animation(jersey_int, fg=fg, bg=bg)
+                                    leds.goal_matrix_animation(jersey_int, fg=fg_color, bg=bg_color)
+
                                 except Exception as e:
                                     log(f"Matrix jersey display error: {e}")
                                     lcd.show_text("GOAL!!!", "JERSEY ERR")
                             else:
                                 lcd.show_text("GOAL!!!", "JERSEY N/A")
 
-                            # countdown then animation
+                            # countdown then backlight animation
                             local_delay = delay_ctrl.get_delay()
                             lcd.show_text("GOAL DETECTED", f"Wait {local_delay}s")
                             log(f"Waiting {local_delay}s before triggering animation...")
@@ -136,14 +143,16 @@ def main():
 
                             lcd.show_text("GOAL!!!", "GO HABS GO")
                             leds.goal_flash_sequence()
+
+                            # ✅ schedule emoji 20s AFTER goal animation
                             emoji_due_at = time.time() + 20
+                            log("Emoji scheduled in 20 seconds after goal animation.")
 
-                last_mtl_score = mtl_score
-
+                # ------------- SCHEDULED EMOJI (ONCE) -------------
                 if emoji_due_at is not None and time.time() >= emoji_due_at:
                     try:
-                        emoji, fg, bg = pick_emoji_and_colors(data, config.TEAM_ABBR)
-                        leds.matrix.emoji_animation(emoji, fg=fg, bg=bg, pulses=4)
+                        emoji, efg, ebg = pick_emoji_and_colors(data, config.TEAM_ABBR)
+                        leds.matrix.emoji_animation(emoji, fg=efg, bg=ebg, pulses=4)
                         log(f"Emoji shown (scheduled): {emoji}")
                     except Exception as e:
                         log(f"Emoji scheduled display error: {e}")
