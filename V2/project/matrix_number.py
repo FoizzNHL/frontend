@@ -19,6 +19,51 @@ DIGITS_6x9 = {
     "9":["111111","110011","110011","110011","111111","111111","000011","000011","111111","111111"]
 }
 
+EMOJIS_15x12 = {
+    "sad": [
+        "000000000000000",
+        "000000000000000",
+        "001110000011100",
+        "001110000011100",
+        "001110000011100",
+        "000000000000000",
+        "000000000000000",
+        "000011111111000",
+        "000111111111100",
+        "001111111111110",
+        "000000000000000",
+        "000000000000000",
+    ],
+    "happy": [
+        "000000000000000",
+        "000000000000000",
+        "001110000011100",
+        "001110000011100",
+        "001110000011100",
+        "000000000000000",
+        "000000000000000",
+        "001111111111110",
+        "000111111111100",
+        "000011111111000",
+        "000000000000000",
+        "000000000000000",
+    ],
+    "stressed": [
+        "000000000000000",
+        "000000000000000",
+        "001110000011100",
+        "001110000011100",
+        "001110000011100",
+        "000000000000000",
+        "000000000000000",
+        "001000100010000",
+        "000101010101010",
+        "000010001000100",
+        "000000000000000",
+        "000000000000000",
+    ],
+}
+
 
 def _clamp(v): 
     return 0 if v < 0 else (255 if v > 255 else v)
@@ -175,70 +220,161 @@ class MatrixNumberDisplay:
 
     def goal_number_animation(self, n: int, fg, bg, gap=1):
         """
-        Cool goal animation:
-          - background wipe
-          - pop/bounce number
-          - sparkles/confetti
-          - invert flashes
+        Extended GOAL animation (longer & more hype):
+        1) Slow background wipe
+        2) Big pop + bounce
+        3) Extended sparkle/confetti
+        4) Pulse hold
+        5) Invert flashes
+        6) Final steady display
         """
-        # Validate (your font supports 0-99)
+        import time
+        import random
+
         s = str(n)
         if not s.isdigit() or len(s) > 2:
             raise ValueError("Only supports 0-99")
 
-        # Layout
+        # layout
         total_w = self.digit_w if len(s) == 1 else (self.digit_w * 2 + gap)
         total_h = self.digit_h
         cx = (self.w - total_w) // 2
         cy = (self.h - total_h) // 2
 
-        # 1) background wipe
-        self._wipe_bg(bg, direction="lr", step_delay=0.01)
+        def dim(rgb, factor):
+            return (
+                max(0, min(255, int(rgb[0] * factor))),
+                max(0, min(255, int(rgb[1] * factor))),
+                max(0, min(255, int(rgb[2] * factor))),
+            )
 
-        # 2) pop/bounce (quick vertical bounce + slight shake)
-        pop_steps = [
-            (0, 2, 0.55),   # start dim + lower
-            (0, 1, 0.75),
-            (0, 0, 1.00),   # center bright
-            (1, 0, 1.00),   # tiny shake right
-            (-1, 0, 1.00),  # tiny shake left
-            (0, 0, 1.00),
-            (0, 1, 0.85),   # settle
-            (0, 0, 1.00),
+        # -------------------------------------------------
+        # 1) SLOW BACKGROUND WIPE (feels intentional)
+        # -------------------------------------------------
+        bg_int = _to_color(bg)
+        for x in range(self.w):
+            for y in range(self.h):
+                self._set_pixel(x, y, bg_int)
+            self.strip.show()
+            time.sleep(0.02)   # slower than before
+
+        # -------------------------------------------------
+        # 2) BIG POP / BOUNCE (more frames)
+        # -------------------------------------------------
+        bounce_frames = [
+            (0,  3, 0.35),
+            (0,  2, 0.55),
+            (0,  1, 0.75),
+            (0,  0, 1.00),  # impact
+            (1,  0, 1.00),
+            (-1, 0, 1.00),
+            (0,  0, 1.00),
+            (0,  1, 0.85),
+            (0,  0, 1.00),
+            (0,  1, 0.90),
+            (0,  0, 1.00),
         ]
 
-        for dx, dy, bright in pop_steps:
+        for dx, dy, bright in bounce_frames:
             self.fill(bg)
-            fg_step = _dim(fg, bright)
-            self._draw_number_at(n, cx + dx, cy + dy, fg_step, gap=gap)
+            self._draw_number_at(n, cx + dx, cy + dy, dim(fg, bright), gap)
             self.strip.show()
-            time.sleep(0.05)
+            time.sleep(0.08)
 
-        # 3) sparkles/confetti (team colors)
+        # -------------------------------------------------
+        # 3) EXTENDED SPARKLES / CONFETTI
+        # -------------------------------------------------
         fg_int = _to_color(fg)
-        bg_int = _to_color(bg)
-        alt_int = _to_color(_dim(fg, 0.35))  # darker sparkles
+        alt_int = _to_color(dim(fg, 0.35))
 
-        for _ in range(12):
-            # keep number visible
+        for _ in range(24):   # ← longer sparkle phase
             self.fill(bg)
-            self._draw_number_at(n, cx, cy, fg, gap=gap)
+            self._draw_number_at(n, cx, cy, fg, gap)
 
-            # sprinkle random pixels
-            for __ in range(18):
+            for __ in range(30):
                 x = random.randint(0, self.w - 1)
                 y = random.randint(0, self.h - 1)
-                self._set_pixel(x, y, fg_int if random.random() > 0.35 else alt_int)
+                self._set_pixel(
+                    x, y,
+                    fg_int if random.random() > 0.4 else alt_int
+                )
 
             self.strip.show()
-            time.sleep(0.06)
+            time.sleep(0.07)
 
-        # 4) invert flash end
-        for _ in range(2):
+        # -------------------------------------------------
+        # 4) PULSE HOLD (breathing effect)
+        # -------------------------------------------------
+        for pulse in [0.85, 1.0, 0.9, 1.0, 0.95, 1.0]:
+            self.fill(bg)
+            self._draw_number_at(n, cx, cy, dim(fg, pulse), gap)
+            self.strip.show()
+            time.sleep(0.18)
+
+        # -------------------------------------------------
+        # 5) INVERT FLASHES (dramatic end)
+        # -------------------------------------------------
+        for _ in range(3):
             self.show_number(n, fg=bg, bg=fg, gap=gap)
-            time.sleep(0.10)
+            time.sleep(0.15)
             self.show_number(n, fg=fg, bg=bg, gap=gap)
-            time.sleep(0.10)
+            time.sleep(0.15)
+
+        # -------------------------------------------------
+        # 6) FINAL HOLD (let it breathe)
+        # -------------------------------------------------
+        self.show_number(n, fg=fg, bg=bg, gap=gap)
+        time.sleep(1.2)
+
+    def show_emoji(self, name: str, fg, bg=(0, 0, 0)):
+        """
+        Draw 14x12 emoji centered on the matrix.
+        fg/bg accept (r,g,b) tuples.
+        """
+        if name not in EMOJIS_14x12:
+            raise ValueError(f"Unknown emoji: {name}")
+
+        bitmap = EMOJIS_14x12[name]
+        h = len(bitmap)
+        w = len(bitmap[0]) if h else 0
+
+        x0 = (self.w - w) // 2
+        y0 = (self.h - h) // 2
+
+        # background
+        self.fill(bg)
+
+        # draw emoji
+        fg_int = _to_color(fg)
+        for y, row in enumerate(bitmap):
+            for x, ch in enumerate(row):
+                if ch == "1":
+                    self._set_pixel(x0 + x, y0 + y, fg_int)
+
+        self.strip.show()
+
+
+    def emoji_animation(self, name: str, fg, bg, pulses: int = 4):
+        """
+        Small 'breathing' animation for emojis.
+        """
+        import time
+
+        def dim(rgb, f):
+            return (
+                max(0, min(255, int(rgb[0] * f))),
+                max(0, min(255, int(rgb[1] * f))),
+                max(0, min(255, int(rgb[2] * f))),
+            )
+
+        for _ in range(pulses):
+            self.show_emoji(name, fg=dim(fg, 0.65), bg=bg)
+            time.sleep(0.20)
+            self.show_emoji(name, fg=dim(fg, 1.00), bg=bg)
+            time.sleep(0.20)
+
+        # final hold
+        self.show_emoji(name, fg=fg, bg=bg)
 
 # --------- Simple functional wrapper if you prefer ---------
 _default_display = None

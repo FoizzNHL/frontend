@@ -10,6 +10,7 @@ from backend_client import fetch_game_now
 from button_controller import DelayController
 from matrix_number import display_number
 from nhl_team_colors import get_team_colors
+from emoji_state import pick_emoji_and_colors
 
 
 def main():
@@ -25,6 +26,8 @@ def main():
 
     last_mtl_score = None
     last_game_id = None
+    emoji_due_at = None                 # timestamp when we should show emoji
+    emoji_shown_for_game_id = None      # to show emoji once at game start
 
     try:
         while True:
@@ -76,6 +79,14 @@ def main():
                     last_game_id = game_id
                     last_goal_count = None  # reset for new game
 
+                try:
+                    emoji, fg, bg = pick_emoji_and_colors(data, config.TEAM_ABBR)
+                    leds.matrix.emoji_animation(emoji, fg=fg, bg=bg, pulses=4)
+                    emoji_shown_for_game_id = game_id
+                    log(f"Emoji shown at game start: {emoji}")
+                except Exception as e:
+                    log(f"Emoji start display error: {e}")
+
                 # Only fetch goals if we actually have a game
                 if game_id:
                     goals_payload = fetch_goals(game_id)
@@ -125,8 +136,19 @@ def main():
 
                             lcd.show_text("GOAL!!!", "GO HABS GO")
                             leds.goal_flash_sequence()
+                            emoji_due_at = time.time() + 20
 
                 last_mtl_score = mtl_score
+
+                if emoji_due_at is not None and time.time() >= emoji_due_at:
+                    try:
+                        emoji, fg, bg = pick_emoji_and_colors(data, config.TEAM_ABBR)
+                        leds.matrix.emoji_animation(emoji, fg=fg, bg=bg, pulses=4)
+                        log(f"Emoji shown (scheduled): {emoji}")
+                    except Exception as e:
+                        log(f"Emoji scheduled display error: {e}")
+                    finally:
+                        emoji_due_at = None
 
             except Exception as e:
                 log(f"ERROR in main loop: {e}")
