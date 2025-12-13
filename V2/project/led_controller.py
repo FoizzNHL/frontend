@@ -37,3 +37,6 @@ class LedController:
     def turn_off(self):
         self.matrix.clear()
         self.backlight.off()
+
+    def goal_matrix_animation(self, n, fg, bg):
+        self.matrix.goal_number_animation(n, fg=fg, bg=bg)

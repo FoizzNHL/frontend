@@ -2,39 +2,39 @@
 from typing import Dict, Tuple
 
 # HEX colors exactly from your TS file
-NHL_TEAM_COLORS: Dict[str, Dict[str, str]] = {
-    "ANA": {"primary": "#F47A38", "secondary": "#B9975B"},
-    "ARI": {"primary": "#8C2633", "secondary": "#E2D6B5"},
-    "BOS": {"primary": "#FFB81C", "secondary": "#000000"},
-    "BUF": {"primary": "#003087", "secondary": "#FFB81C"},
-    "CGY": {"primary": "#C8102E", "secondary": "#F1BE48"},
-    "CAR": {"primary": "#CC0000", "secondary": "#000000"},
-    "CHI": {"primary": "#CF0A2C", "secondary": "#000000"},
-    "COL": {"primary": "#6F263D", "secondary": "#236192"},
-    "CBJ": {"primary": "#002654", "secondary": "#CE1126"},
-    "DAL": {"primary": "#006847", "secondary": "#8F8F8C"},
-    "DET": {"primary": "#CE1126", "secondary": "#FFFFFF"},
-    "EDM": {"primary": "#041E42", "secondary": "#FF4C00"},
-    "FLA": {"primary": "#041E42", "secondary": "#C8102E"},
-    "LAK": {"primary": "#111111", "secondary": "#A2AAAD"},
-    "MIN": {"primary": "#154734", "secondary": "#A6192E"},
-    "MTL": {"primary": "#d40f23", "secondary": "#0d1da6"},
-    "NSH": {"primary": "#FFB81C", "secondary": "#041E42"},
-    "NJD": {"primary": "#CE1126", "secondary": "#000000"},
-    "NYI": {"primary": "#00539B", "secondary": "#F47D30"},
-    "NYR": {"primary": "#0038A8", "secondary": "#CE1126"},
-    "OTT": {"primary": "#C8102E", "secondary": "#C69214"},
-    "PHI": {"primary": "#F74902", "secondary": "#000000"},
-    "PIT": {"primary": "#FFB81C", "secondary": "#000000"},
-    "SJS": {"primary": "#006D75", "secondary": "#EA7200"},
-    "SEA": {"primary": "#99D9D9", "secondary": "#001628"},
-    "STL": {"primary": "#002F87", "secondary": "#FCB514"},
-    "TBL": {"primary": "#002868", "secondary": "#FFFFFF"},
-    "TOR": {"primary": "#00205B", "secondary": "#FFFFFF"},
-    "VAN": {"primary": "#00205B", "secondary": "#00843D"},
-    "VGK": {"primary": "#B4975A", "secondary": "#333F48"},
-    "WSH": {"primary": "#041E42", "secondary": "#C8102E"},
-    "WPG": {"primary": "#041E42", "secondary": "#AC162C"},
+NHL_TEAM_COLORS = {
+    "ANA": {"primary": "#FF8C42", "secondary": "#C9A24D"},  # Ducks
+    "ARI": {"primary": "#A62639", "secondary": "#E6D8B8"},  # Coyotes
+    "BOS": {"primary": "#FFD23F", "secondary": "#000000"},  # Bruins
+    "BUF": {"primary": "#0050B5", "secondary": "#FFD23F"},  # Sabres
+    "CGY": {"primary": "#E3172D", "secondary": "#FFD966"},  # Flames
+    "CAR": {"primary": "#E10600", "secondary": "#111111"},  # Hurricanes
+    "CHI": {"primary": "#E10600", "secondary": "#000000"},  # Blackhawks
+    "COL": {"primary": "#8B2A3A", "secondary": "#2A6EBB"},  # Avalanche
+    "CBJ": {"primary": "#003F91", "secondary": "#E3172D"},  # Blue Jackets
+    "DAL": {"primary": "#00875A", "secondary": "#A0A0A0"},  # Stars
+    "DET": {"primary": "#E10600", "secondary": "#FFFFFF"},  # Red Wings
+    "EDM": {"primary": "#003F91", "secondary": "#FF6A00"},  # Oilers
+    "FLA": {"primary": "#003F91", "secondary": "#E3172D"},  # Panthers
+    "LAK": {"primary": "#1A1A1A", "secondary": "#B3B3B3"},  # Kings
+    "MIN": {"primary": "#1E6F4A", "secondary": "#C62828"},  # Wild
+    "MTL": {"primary": "#E10600", "secondary": "#003DA5"},  # Canadiens (bright)
+    "NSH": {"primary": "#FFD23F", "secondary": "#003F91"},  # Predators
+    "NJD": {"primary": "#E10600", "secondary": "#000000"},  # Devils
+    "NYI": {"primary": "#0066CC", "secondary": "#FF8C42"},  # Islanders
+    "NYR": {"primary": "#0047AB", "secondary": "#E10600"},  # Rangers
+    "OTT": {"primary": "#E3172D", "secondary": "#D4AF37"},  # Senators
+    "PHI": {"primary": "#FF6A00", "secondary": "#000000"},  # Flyers
+    "PIT": {"primary": "#FFD23F", "secondary": "#000000"},  # Penguins
+    "SJS": {"primary": "#00A3AD", "secondary": "#FF8C42"},  # Sharks
+    "SEA": {"primary": "#9FE0E0", "secondary": "#002033"},  # Kraken
+    "STL": {"primary": "#0047AB", "secondary": "#FFD23F"},  # Blues
+    "TBL": {"primary": "#0047AB", "secondary": "#FFFFFF"},  # Lightning
+    "TOR": {"primary": "#0033A0", "secondary": "#FFFFFF"},  # Maple Leafs
+    "VAN": {"primary": "#0033A0", "secondary": "#00A86B"},  # Canucks
+    "VGK": {"primary": "#C9A24D", "secondary": "#3A3F44"},  # Golden Knights
+    "WSH": {"primary": "#003F91", "secondary": "#E3172D"},  # Capitals
+    "WPG": {"primary": "#003F91", "secondary": "#C62828"},  # Jets
 }
 
 # ---------- helpers ----------
