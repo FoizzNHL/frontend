@@ -1,0 +1,236 @@
+[
+  {
+    "id": 8477934,
+    "fullName": "Leon Draisaitl",
+    "position": "C",
+    "number": 29,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8477934.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8479365,
+    "fullName": "Trent Frederic",
+    "position": "C",
+    "number": 10,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8479365.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8474641,
+    "fullName": "Adam Henrique",
+    "position": "C",
+    "number": 19,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8474641.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8483455,
+    "fullName": "Isaac Howard",
+    "position": "L",
+    "number": 53,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8483455.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8475786,
+    "fullName": "Zach Hyman",
+    "position": "L",
+    "number": 18,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8475786.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8477406,
+    "fullName": "Mattias Janmark",
+    "position": "C",
+    "number": 13,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8477406.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8477953,
+    "fullName": "Kasperi Kapanen",
+    "position": "R",
+    "number": 42,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8477953.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8477508,
+    "fullName": "Curtis Lazar",
+    "position": "C",
+    "number": 20,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8477508.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8478233,
+    "fullName": "Andrew Mangiapane",
+    "position": "L",
+    "number": 88,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8478233.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8478402,
+    "fullName": "Connor McDavid",
+    "position": "C",
+    "number": 97,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8478402.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8476454,
+    "fullName": "Ryan Nugent-Hopkins",
+    "position": "C",
+    "number": 93,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8476454.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8481491,
+    "fullName": "Noah Philp",
+    "position": "C",
+    "number": 48,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8481491.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8481617,
+    "fullName": "Vasily Podkolzin",
+    "position": "R",
+    "number": 92,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8481617.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8478458,
+    "fullName": "Jack Roslovic",
+    "position": "C",
+    "number": 28,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8478458.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8483512,
+    "fullName": "Matt Savoie",
+    "position": "C",
+    "number": 22,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8483512.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8485493,
+    "fullName": "David Tomasek",
+    "position": "R",
+    "number": 86,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8485493.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8480803,
+    "fullName": "Evan Bouchard",
+    "position": "D",
+    "number": 2,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8480803.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8475218,
+    "fullName": "Mattias Ekholm",
+    "position": "D",
+    "number": 14,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8475218.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8480834,
+    "fullName": "Ty Emberson",
+    "position": "D",
+    "number": 49,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8480834.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8476967,
+    "fullName": "Brett Kulak",
+    "position": "D",
+    "number": 27,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8476967.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8477498,
+    "fullName": "Darnell Nurse",
+    "position": "D",
+    "number": 25,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8477498.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8480831,
+    "fullName": "Alec Regula",
+    "position": "D",
+    "number": 75,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8480831.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8479442,
+    "fullName": "Troy Stecher",
+    "position": "D",
+    "number": 51,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8479442.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8478013,
+    "fullName": "Jake Walman",
+    "position": "D",
+    "number": 96,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8478013.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8475717,
+    "fullName": "Calvin Pickard",
+    "position": "G",
+    "number": 30,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8475717.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8479973,
+    "fullName": "Stuart Skinner",
+    "position": "G",
+    "number": 74,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8479973.png",
+    "team": "EDM"
+  }
+]

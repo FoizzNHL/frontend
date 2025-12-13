@@ -1,0 +1,218 @@
+[
+  {
+    "id": 8484153,
+    "fullName": "Leo Carlsson",
+    "position": "C",
+    "number": 91,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8484153.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8482118,
+    "fullName": "Sam Colangelo",
+    "position": "R",
+    "number": 12,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8482118.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8483445,
+    "fullName": "Cutter Gauthier",
+    "position": "L",
+    "number": 61,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8483445.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8475798,
+    "fullName": "Mikael Granlund",
+    "position": "C",
+    "number": 64,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8475798.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8478424,
+    "fullName": "Jansen Harkins",
+    "position": "C",
+    "number": 24,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8478424.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8477527,
+    "fullName": "Ross Johnston",
+    "position": "L",
+    "number": 44,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8477527.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8473986,
+    "fullName": "Alex Killorn",
+    "position": "L",
+    "number": 17,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8473986.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8475184,
+    "fullName": "Chris Kreider",
+    "position": "L",
+    "number": 20,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8475184.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8482745,
+    "fullName": "Mason McTavish",
+    "position": "C",
+    "number": 23,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8482745.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8481754,
+    "fullName": "Nikita Nesterenko",
+    "position": "C",
+    "number": 13,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8481754.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8480068,
+    "fullName": "Ryan Poehling",
+    "position": "C",
+    "number": 25,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8480068.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8484762,
+    "fullName": "Beckett Sennecke",
+    "position": "R",
+    "number": 45,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8484762.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8476458,
+    "fullName": "Ryan Strome",
+    "position": "C",
+    "number": 16,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8476458.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8478873,
+    "fullName": "Troy Terry",
+    "position": "R",
+    "number": 19,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8478873.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8478366,
+    "fullName": "Frank Vatrano",
+    "position": "R",
+    "number": 77,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8478366.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8475462,
+    "fullName": "Radko Gudas",
+    "position": "D",
+    "number": 7,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8475462.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8481563,
+    "fullName": "Drew Helleson",
+    "position": "D",
+    "number": 14,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8481563.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8481605,
+    "fullName": "Jackson LaCombe",
+    "position": "D",
+    "number": 2,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8481605.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8483490,
+    "fullName": "Pavel Mintyukov",
+    "position": "D",
+    "number": 98,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8483490.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8482178,
+    "fullName": "Ian Moore",
+    "position": "D",
+    "number": 74,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8482178.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8476885,
+    "fullName": "Jacob Trouba",
+    "position": "D",
+    "number": 65,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8476885.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8482803,
+    "fullName": "Olen Zellweger",
+    "position": "D",
+    "number": 51,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8482803.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8480843,
+    "fullName": "Lukas Dostal",
+    "position": "G",
+    "number": 1,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8480843.png",
+    "team": "ANA"
+  },
+  {
+    "id": 8475852,
+    "fullName": "Petr Mrazek",
+    "position": "G",
+    "number": 34,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8475852.png",
+    "team": "ANA"
+  }
+]

@@ -1,49 +1,39 @@
 # led_controller.py
-import time
-from rpi_ws281x import PixelStrip, Color
-
-import config
-from log_utils import log
-
+from matrix_number import MatrixNumberDisplay
+from screen_backlight_controller import ScreenBacklightController
 
 class LedController:
     def __init__(self):
-        self.strip = PixelStrip(
-            config.LED_COUNT,
-            config.LED_PIN,
-            config.LED_FREQ_HZ,
-            config.LED_DMA,
-            config.LED_INVERT,
-            config.LED_BRIGHTNESS,
-            config.LED_CHANNEL
+        # A) Score matrix (15x12 on GPIO 18 for example)
+        self.matrix = MatrixNumberDisplay(
+            matrix_width=15,
+            matrix_height=12,
+            led_pin=18,
+            led_channel=0,     # channel 0
+            led_brightness=80,
+            serpentine=True,
         )
-        self.strip.begin()
 
-        # Colors
-        self.HABS_RED  = Color(255, 0, 0)
-        self.HABS_BLUE = Color(0, 0, 255)
-        self.WHITE     = Color(255, 255, 255)
-        self.OFF_COLOR = Color(0, 0, 0)
+        # B) Back-of-screen strip (example: 60 LEDs on GPIO 13 channel 1)
+        self.backlight = ScreenBacklightController(
+            led_count=60,
+            led_pin=13,
+            led_channel=1,     # channel 1 (important if using 13/18 combo)
+            brightness=128,
+        )
 
-    def fill(self, color):
-        for i in range(self.strip.numPixels()):
-            self.strip.setPixelColor(i, color)
-        self.strip.show()
+    # ---- Number display API ----
+    def show_number(self, n: int, fg=(255,255,255), bg=(0,0,30)):
+        self.matrix.show_number(n, fg=fg, bg=bg)
 
-    def goal_flash_sequence(self, duration_seconds: int = 6):
-        log("Starting LED goal animation...")
-        end_time = time.time() + duration_seconds
-        colors = [self.HABS_RED, self.WHITE, self.HABS_BLUE, self.WHITE]
-        idx = 0
+    # ---- Backlight API ----
+    def set_backlight(self, color):
+        self.backlight.fill(color)
 
-        while time.time() < end_time:
-            self.fill(colors[idx])
-            idx = (idx + 1) % len(colors)
-            time.sleep(0.15)
-
-        self.fill(self.OFF_COLOR)
-        log("LED animation finished.")
+    def goal_flash_sequence(self):
+        # flash backlight + show score on matrix (example)
+        self.backlight.goal_flash(flashes=8, on=(255,255,255), delay=0.10)
 
     def turn_off(self):
-        self.fill(self.OFF_COLOR)
-        log("LEDs turned off.")
+        self.matrix.clear()
+        self.backlight.off()

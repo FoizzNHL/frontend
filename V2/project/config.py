@@ -1,8 +1,8 @@
 # config.py
 
 # ---------- BACKEND ----------
-BACKEND_BASE_URL = "http://localhost:3000"
-TEAM_ABBR = "MTL"
+BACKEND_BASE_URL = "https://api-web.nhle.com/v1"
+TEAM_ABBR = "CHI"
 
 # ---------- LCD ----------
 LCD_I2C_ADDRESS = 0x27

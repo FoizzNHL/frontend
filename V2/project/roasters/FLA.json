@@ -1,0 +1,236 @@
+[
+  {
+    "id": 8477493,
+    "fullName": "Aleksander Barkov",
+    "position": "C",
+    "number": 16,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8477493.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8477935,
+    "fullName": "Sam Bennett",
+    "position": "C",
+    "number": 9,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8477935.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8480003,
+    "fullName": "Jesper Boqvist",
+    "position": "C",
+    "number": 70,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8480003.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8479981,
+    "fullName": "Jonah Gadjovich",
+    "position": "L",
+    "number": 12,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8479981.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8478421,
+    "fullName": "A.J. Greer",
+    "position": "L",
+    "number": 10,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8478421.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8479393,
+    "fullName": "Noah Gregor",
+    "position": "L",
+    "number": 18,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8479393.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8479316,
+    "fullName": "Luke Kunin",
+    "position": "C",
+    "number": 71,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8479316.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8482113,
+    "fullName": "Anton Lundell",
+    "position": "C",
+    "number": 15,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8482113.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8480185,
+    "fullName": "Eetu Luostarinen",
+    "position": "C",
+    "number": 27,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8480185.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8473419,
+    "fullName": "Brad Marchand",
+    "position": "L",
+    "number": 63,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8473419.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8477933,
+    "fullName": "Sam Reinhart",
+    "position": "C",
+    "number": 13,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8477933.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8478542,
+    "fullName": "Evan Rodrigues",
+    "position": "C",
+    "number": 17,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8478542.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8482713,
+    "fullName": "Mackie Samoskevich",
+    "position": "R",
+    "number": 11,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8482713.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8481655,
+    "fullName": "Cole Schwindt",
+    "position": "C",
+    "number": 79,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8481655.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8477409,
+    "fullName": "Carter Verhaeghe",
+    "position": "C",
+    "number": 23,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8477409.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8484304,
+    "fullName": "Uvis Balinskis",
+    "position": "D",
+    "number": 26,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8484304.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8481600,
+    "fullName": "Tobias Bjornfot",
+    "position": "D",
+    "number": 22,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8481600.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8477932,
+    "fullName": "Aaron Ekblad",
+    "position": "D",
+    "number": 5,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8477932.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8478055,
+    "fullName": "Gustav Forsling",
+    "position": "D",
+    "number": 42,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8478055.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8477495,
+    "fullName": "Seth Jones",
+    "position": "D",
+    "number": 3,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8477495.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8475179,
+    "fullName": "Dmitry Kulikov",
+    "position": "D",
+    "number": 7,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8475179.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8478859,
+    "fullName": "Niko Mikkola",
+    "position": "D",
+    "number": 77,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8478859.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8473507,
+    "fullName": "Jeff Petry",
+    "position": "D",
+    "number": 2,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8473507.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8482131,
+    "fullName": "Donovan Sebrango",
+    "position": "D",
+    "number": 6,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8482131.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8475683,
+    "fullName": "Sergei Bobrovsky",
+    "position": "G",
+    "number": 72,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8475683.png",
+    "team": "FLA"
+  },
+  {
+    "id": 8480193,
+    "fullName": "Daniil Tarasov",
+    "position": "G",
+    "number": 40,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8480193.png",
+    "team": "FLA"
+  }
+]

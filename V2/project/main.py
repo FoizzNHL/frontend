@@ -8,6 +8,7 @@ from lcd_display import LcdDisplay
 from led_controller import LedController
 from backend_client import fetch_game_now
 from button_controller import DelayController
+from matrix_number import display_number
 
 
 def main():
@@ -87,6 +88,7 @@ def main():
 
                     # Show GOAL message + run animation
                     lcd.show_text("GOAL!!!", "GO HABS GO")
+                    leds.show_number(mtl_score, fg=(255,255,255), bg=(0,0,30))
                     leds.goal_flash_sequence()
 
                 last_mtl_score = mtl_score
