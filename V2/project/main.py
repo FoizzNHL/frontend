@@ -9,6 +9,7 @@ from led_controller import LedController
 from backend_client import fetch_game_now
 from button_controller import DelayController
 from matrix_number import display_number
+from nhl_team_colors import get_team_colors
 
 
 def main():
@@ -103,13 +104,20 @@ def main():
                             if jersey is not None:
                                 try:
                                     jersey_int = int(jersey)
+
+                                    fg_color, bg_color = get_team_colors(team)
+
                                     lcd.show_text("GOAL!!!", f"#{jersey_int}")
-                                    leds.show_number(jersey_int, fg=(255, 255, 255), bg=(0, 0, 30))
+                                    leds.show_number(
+                                        jersey_int,
+                                        fg=fg_color,   # team primary
+                                        bg=bg_color,   # team secondary
+                                    )
                                 except Exception as e:
                                     log(f"Matrix jersey display error: {e}")
-                                    lcd.show_text("GOAL!!!", "Jersey N/A")
+                                    lcd.show_text("GOAL!!!", "JERSEY ERR")
                             else:
-                                lcd.show_text("GOAL!!!", "Jersey N/A")
+                                lcd.show_text("GOAL!!!", "JERSEY N/A")
 
                             # countdown then animation
                             local_delay = delay_ctrl.get_delay()
