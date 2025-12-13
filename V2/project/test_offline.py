@@ -100,7 +100,7 @@ def scenario_goal_events(
                 fg, bg = get_team_colors(team)
 
                 lcd.show_text("GOAL!!!", f"{team} #{jersey_int}")
-                leds.goal_number_animation(jersey_int, fg=fg, bg=bg)
+                leds.goal_matrix_animation(jersey_int, fg=fg, bg=bg)
 
                 log(f"Matrix: showing #{jersey_int} (FG={fg}, BG={bg})")
             except Exception as e:

@@ -108,7 +108,7 @@ def main():
                                     fg_color, bg_color = get_team_colors(team)
 
                                     lcd.show_text("GOAL!!!", f"#{jersey_int}")
-                                    leds.goal_number_animation(jersey_int, fg=fg, bg=bg)
+                                    leds.goal_matrix_animation(jersey_int, fg=fg, bg=bg)
                                 except Exception as e:
                                     log(f"Matrix jersey display error: {e}")
                                     lcd.show_text("GOAL!!!", "JERSEY ERR")
