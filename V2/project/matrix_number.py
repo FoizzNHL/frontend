@@ -331,10 +331,10 @@ class MatrixNumberDisplay:
         Draw 14x12 emoji centered on the matrix.
         fg/bg accept (r,g,b) tuples.
         """
-        if name not in EMOJIS_14x12:
+        if name not in EMOJIS_15x12:
             raise ValueError(f"Unknown emoji: {name}")
 
-        bitmap = EMOJIS_14x12[name]
+        bitmap = EMOJIS_15x12[name]
         h = len(bitmap)
         w = len(bitmap[0]) if h else 0
 
