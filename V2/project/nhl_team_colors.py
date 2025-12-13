@@ -18,7 +18,7 @@ NHL_TEAM_COLORS: Dict[str, Dict[str, str]] = {
     "FLA": {"primary": "#041E42", "secondary": "#C8102E"},
     "LAK": {"primary": "#111111", "secondary": "#A2AAAD"},
     "MIN": {"primary": "#154734", "secondary": "#A6192E"},
-    "MTL": {"primary": "#AF1E2D", "secondary": "#192168"},
+    "MTL": {"primary": "#d40f23", "secondary": "#0d1da6"},
     "NSH": {"primary": "#FFB81C", "secondary": "#041E42"},
     "NJD": {"primary": "#CE1126", "secondary": "#000000"},
     "NYI": {"primary": "#00539B", "secondary": "#F47D30"},
