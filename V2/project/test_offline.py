@@ -7,46 +7,44 @@ from lcd_display import LcdDisplay
 from led_controller import LedController
 from button_controller import DelayController
 
+from nhl_team_colors import get_team_colors
 
-def run_countdown(lcd: LcdDisplay, delay_ctrl: DelayController):
+
+def countdown_with_button(lcd: LcdDisplay, delay_ctrl: DelayController):
     """
-    Countdown that keeps showing delay and logs, so you can test:
-    - button changes
-    - LCD updates
-    - timing
+    Countdown that keeps updating LCD and allows delay changes while testing.
     """
     local_delay = delay_ctrl.get_delay()
     lcd.show_text("GOAL DETECTED", f"Wait {local_delay}s")
     log(f"Waiting {local_delay}s before triggering animation...")
 
-    # Re-read delay each second to let you change it with the button mid-countdown
-    for i in range(local_delay, 0, -1):
+    # Allow changing delay mid-countdown
+    remaining = local_delay
+    while remaining > 0:
         new_delay = delay_ctrl.get_delay()
         if new_delay != local_delay:
             local_delay = new_delay
-            log(f"Delay changed -> {local_delay}s (restarting countdown)")
+            remaining = local_delay
+            log(f"Delay changed -> {local_delay}s (restart countdown)")
             lcd.show_text("GOAL DETECTED", f"Wait {local_delay}s")
-            i = local_delay  # reset countdown
 
-        log(f"Countdown: {i}s remaining")
+        log(f"Countdown: {remaining}s remaining")
         lcd.show_delay_only(delay_ctrl.get_delay())
         time.sleep(1)
+        remaining -= 1
 
 
 def scenario_no_game(lcd: LcdDisplay, delay_ctrl: DelayController, seconds=6):
     log("SCENARIO: NO GAME")
-    t_end = time.time() + seconds
-    while time.time() < t_end:
+    end = time.time() + seconds
+    while time.time() < end:
         lcd.show_text("NO GAME", "Offline test")
         lcd.show_delay_only(delay_ctrl.get_delay())
         time.sleep(1)
 
 
 def scenario_score_updates(lcd: LcdDisplay, delay_ctrl: DelayController, updates):
-    """
-    updates: list of tuples (home_abbr, home_score, away_abbr, away_score)
-    """
-    log("SCENARIO: SCORE UPDATES (no goal animation yet)")
+    log("SCENARIO: SCORE UPDATES (no goal)")
     for (h, hs, a, as_) in updates:
         line1 = f"{h} {hs}-{as_} {a}"
         lcd.show_text(line1, "")
@@ -55,84 +53,78 @@ def scenario_score_updates(lcd: LcdDisplay, delay_ctrl: DelayController, updates
         time.sleep(2)
 
 
-def scenario_goal_detected(
+def scenario_goal_events(
     lcd: LcdDisplay,
     leds: LedController,
     delay_ctrl: DelayController,
-    team_abbr: str,
-    home_abbr: str,
-    away_abbr: str,
-    start_home_score: int,
-    start_away_score: int,
-    goals_for_team: int = 2,
+    events,
 ):
     """
-    Simulates goal detection logic like your main.py:
-    - increments the chosen team's score
-    - triggers countdown + LED animations
-    - shows score number on matrix (MTL score, or your TEAM_ABBR score)
+    events: list of dicts like:
+      {
+        "home_abbr": "MTL",
+        "away_abbr": "WSH",
+        "home_score": 0,
+        "away_score": 1,
+        "scorer": { "fullName": "...", "team": "WSH", "number": 8 }
+      }
+    Simulates: new goal -> show jersey number with team colors -> countdown -> animation
     """
-    log("SCENARIO: GOAL DETECTED + COUNTDOWN + ANIMATION")
+    log("SCENARIO: GOAL EVENTS (jersey # + team colors)")
 
-    home_score = start_home_score
-    away_score = start_away_score
+    for ev in events:
+        home_abbr = ev["home_abbr"]
+        away_abbr = ev["away_abbr"]
+        hs = ev["home_score"]
+        aws = ev["away_score"]
+        scorer = ev.get("scorer") or {}
 
-    # Determine which side is TEAM_ABBR
-    team_is_home = (home_abbr == team_abbr)
-
-    last_team_score = home_score if team_is_home else away_score
-
-    for g in range(goals_for_team):
-        # Display current score
-        line1 = f"{home_abbr} {home_score}-{away_score} {away_abbr}"
+        # show score line
+        line1 = f"{home_abbr} {hs}-{aws} {away_abbr}"
         lcd.show_text(line1, "")
         lcd.show_delay_only(delay_ctrl.get_delay())
         log(f"Score Update: {line1}")
         time.sleep(1.5)
 
-        # Simulate a goal for TEAM_ABBR
-        if team_is_home:
-            home_score += 1
-            team_score = home_score
-        else:
-            away_score += 1
-            team_score = away_score
+        # "goal detected"
+        jersey = scorer.get("number")
+        team = scorer.get("team")
+        name = scorer.get("fullName", "Unknown")
 
-        # Detect goal (same logic)
-        if team_score > last_team_score:
-            log(f"GOAL DETECTED! Team score went {last_team_score} → {team_score}")
+        log(f"GOAL DETECTED! scorer={name} jersey={jersey} team={team}")
 
-            # Show number on matrix (test your 2-color digits)
+        # show jersey number on matrix with team colors
+        if jersey is not None and team:
             try:
-                # fg = white, bg = dim blue (tweak to test)
-                leds.show_number(team_score, fg=(255, 255, 255), bg=(0, 0, 30))
-                log(f"Matrix: showing number {team_score}")
+                jersey_int = int(jersey)
+                fg, bg = get_team_colors(team)
+
+                lcd.show_text("GOAL!!!", f"{team} #{jersey_int}")
+                leds.show_number(jersey_int, fg=fg, bg=bg)
+
+                log(f"Matrix: showing #{jersey_int} (FG={fg}, BG={bg})")
             except Exception as e:
                 log(f"Matrix display error: {e}")
+                lcd.show_text("GOAL!!!", "Matrix ERR")
+        else:
+            lcd.show_text("GOAL!!!", "Jersey N/A")
 
-            # countdown + animation
-            run_countdown(lcd, delay_ctrl)
+        # countdown then animation
+        countdown_with_button(lcd, delay_ctrl)
 
-            lcd.show_text("GOAL!!!", "GO HABS GO")
-            leds.goal_flash_sequence()
-
-            # small pause after goal animation
-            time.sleep(1.0)
-
-        last_team_score = team_score
+        lcd.show_text("GOAL!!!", "GO HABS GO")
+        leds.goal_flash_sequence()
+        time.sleep(1.0)
 
 
-def scenario_all_led_tests(lcd: LcdDisplay, leds: LedController, delay_ctrl: DelayController):
-    """
-    Quick manual LED test menu.
-    """
-    log("SCENARIO: LED TESTS (manual quick sequence)")
+def scenario_led_smoke_tests(lcd: LcdDisplay, leds: LedController, delay_ctrl: DelayController):
+    log("SCENARIO: LED SMOKE TESTS")
 
-    lcd.show_text("LED TEST", "Backlight white")
+    lcd.show_text("LED TEST", "Backlight W")
     leds.set_backlight((255, 255, 255))
     time.sleep(1)
 
-    lcd.show_text("LED TEST", "Backlight red")
+    lcd.show_text("LED TEST", "Backlight R")
     leds.set_backlight((255, 0, 0))
     time.sleep(1)
 
@@ -140,19 +132,20 @@ def scenario_all_led_tests(lcd: LcdDisplay, leds: LedController, delay_ctrl: Del
     leds.set_backlight((0, 0, 0))
     time.sleep(1)
 
-    # Matrix numbers
-    for n in [0, 1, 8, 9, 10, 27, 99]:
+    # matrix sample numbers using a fixed team color
+    fg, bg = get_team_colors("MTL")
+    for n in [0, 1, 8, 9, 10, 22, 27, 73, 88, 99]:
         lcd.show_text("MATRIX TEST", f"Num {n}")
         lcd.show_delay_only(delay_ctrl.get_delay())
-        leds.show_number(n, fg=(255, 255, 255), bg=(0, 0, 30))
-        time.sleep(1.2)
+        leds.show_number(n, fg=fg, bg=bg)
+        time.sleep(1.0)
 
     lcd.show_text("LED TEST", "Done")
     time.sleep(1)
 
 
 def main():
-    log("OFFLINE TEST SCRIPT started.")
+    log("OFFLINE TEST SCRIPT (jersey + team colors) started.")
 
     lcd = LcdDisplay()
     leds = LedController()
@@ -163,35 +156,52 @@ def main():
         time.sleep(1)
         lcd.show_delay_only(delay_ctrl.get_delay())
 
-        # 1) No game display
-        scenario_no_game(lcd, delay_ctrl, seconds=6)
+        # 1) No game
+        scenario_no_game(lcd, delay_ctrl, seconds=5)
 
-        # 2) Some score updates (no goal)
+        # 2) Score updates (no goal)
         scenario_score_updates(
             lcd,
             delay_ctrl,
             updates=[
-                ("CHI", 0, "DET", 0),
-                ("CHI", 0, "DET", 1),
-                ("CHI", 1, "DET", 1),
+                ("MTL", 0, "WSH", 0),
+                ("MTL", 0, "WSH", 1),
+                ("MTL", 1, "WSH", 1),
             ],
         )
 
-        # 3) Full goal detection + countdown + animation (2 goals)
-        scenario_goal_detected(
-            lcd=lcd,
-            leds=leds,
-            delay_ctrl=delay_ctrl,
-            team_abbr=config.TEAM_ABBR,   # uses your config team
-            home_abbr=config.TEAM_ABBR,
-            away_abbr="DET",
-            start_home_score=1,
-            start_away_score=1,
-            goals_for_team=2,
+        # 3) Goal events (simulate multiple scorers, teams, jersey numbers)
+        scenario_goal_events(
+            lcd,
+            leds,
+            delay_ctrl,
+            events=[
+                {
+                    "home_abbr": "MTL",
+                    "away_abbr": "WSH",
+                    "home_score": 0,
+                    "away_score": 1,
+                    "scorer": {"fullName": "Alex Ovechkin", "team": "WSH", "number": 8},
+                },
+                {
+                    "home_abbr": "MTL",
+                    "away_abbr": "WSH",
+                    "home_score": 1,
+                    "away_score": 1,
+                    "scorer": {"fullName": "Cole Caufield", "team": "MTL", "number": 22},
+                },
+                {
+                    "home_abbr": "MTL",
+                    "away_abbr": "WSH",
+                    "home_score": 2,
+                    "away_score": 1,
+                    "scorer": {"fullName": "Nick Suzuki", "team": "MTL", "number": 14},
+                },
+            ],
         )
 
-        # 4) LED-only tests
-        scenario_all_led_tests(lcd, leds, delay_ctrl)
+        # 4) LED smoke tests
+        scenario_led_smoke_tests(lcd, leds, delay_ctrl)
 
         lcd.show_text("OFFLINE TEST", "Finished ✅")
         time.sleep(2)
