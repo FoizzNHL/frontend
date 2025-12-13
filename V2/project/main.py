@@ -67,29 +67,60 @@ def main():
                     mtl_score = away_score
 
                 game_id = data.get("id")
+                state = data.get("state")
 
                 # New game detected
                 if game_id and game_id != last_game_id:
                     log(f"New game detected: {game_id}")
                     last_game_id = game_id
-                    last_mtl_score = mtl_score
+                    last_goal_count = None  # reset for new game
 
-                # ------------- GOAL DETECTED -------------
-                if last_mtl_score is not None and mtl_score > last_mtl_score:
-                    log(f"GOAL DETECTED! Score went from {last_mtl_score} → {mtl_score}")
+                # Only fetch goals if we actually have a game
+                if game_id:
+                    goals_payload = fetch_goals(game_id)
 
-                    local_delay = delay_ctrl.get_delay()
-                    lcd.show_text("GOAL DETECTED", f"Wait {local_delay}s")
+                    if goals_payload.get("ok"):
+                        goals_list = goals_payload.get("goals") or []
+                        goal_count = len(goals_list)
 
-                    log(f"Waiting {local_delay}s before triggering animation...")
-                    for i in range(local_delay, 0, -1):
-                        log(f"Countdown: {i}s remaining")
-                        time.sleep(1)
+                        # initialize baseline
+                        if last_goal_count is None:
+                            last_goal_count = goal_count
 
-                    # Show GOAL message + run animation
-                    lcd.show_text("GOAL!!!", "GO HABS GO")
-                    leds.show_number(mtl_score, fg=(255,255,255), bg=(0,0,30))
-                    leds.goal_flash_sequence()
+                        # new goal(s) detected
+                        elif goal_count > last_goal_count:
+                            new_goals = goals_list[last_goal_count:]  # in case 2 goals happened between polls
+                            last_goal_count = goal_count
+
+                            # take the latest one (or loop them if you want)
+                            last_goal = new_goals[-1]
+                            scorer = last_goal.get("scorer") or {}
+                            jersey = scorer.get("number")
+
+                            log(f"GOAL DETECTED! scorer={scorer.get('fullName')} jersey={jersey}")
+
+                            # show jersey on matrix (only if it's 0-99)
+                            if jersey is not None:
+                                try:
+                                    jersey_int = int(jersey)
+                                    lcd.show_text("GOAL!!!", f"#{jersey_int}")
+                                    leds.show_number(jersey_int, fg=(255, 255, 255), bg=(0, 0, 30))
+                                except Exception as e:
+                                    log(f"Matrix jersey display error: {e}")
+                                    lcd.show_text("GOAL!!!", "Jersey N/A")
+                            else:
+                                lcd.show_text("GOAL!!!", "Jersey N/A")
+
+                            # countdown then animation
+                            local_delay = delay_ctrl.get_delay()
+                            lcd.show_text("GOAL DETECTED", f"Wait {local_delay}s")
+                            log(f"Waiting {local_delay}s before triggering animation...")
+                            for i in range(local_delay, 0, -1):
+                                log(f"Countdown: {i}s remaining")
+                                time.sleep(1)
+
+                            lcd.show_text("GOAL!!!", "GO HABS GO")
+                            leds.goal_flash_sequence()
 
                 last_mtl_score = mtl_score
 
