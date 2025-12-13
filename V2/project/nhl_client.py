@@ -3,8 +3,8 @@ import json
 import os
 import time
 import urllib.request
+import config
 from typing import Any, Dict, List, Optional
-from config import config
 
 # ---- CONFIG (match your old config.cjs) ----
 API_BASE = config.BACKEND_BASE_URL   # same base your node used
