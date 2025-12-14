@@ -114,17 +114,34 @@ def main():
 
                             jersey = scorer.get("number")
                             scorer_team = (scorer.get("team") or "").upper()
+                            my_team = (config.TEAM_ABBR or "").upper()
 
                             log(f"GOAL DETECTED! scorer={scorer.get('fullName')} jersey={jersey} team={scorer_team}")
 
                             # show jersey number with scorer team colors
+                            if scorer_team and scorer_team != my_team:
+                                lcd.show_text("GOAL AGAINST", f"{scorer_team} scored")
+                                try:
+                                    # use your team colors (or swap to scorer_team if you prefer)
+                                    fg, bg = get_team_colors(my_team)
+                                    leds.matrix.emoji_animation("sad", fg=fg, bg=bg, pulses=4)
+                                    log("Opponent goal -> sad emoji shown. (No jersey / no flash)")
+                                except Exception as e:
+                                    log(f"Opponent sad emoji error: {e}")
+                                    lcd.show_text("GOAL AGAINST", "EMOJI ERR")
+
+                                # IMPORTANT: don't run the rest of the goal celebration logic
+                                continue
+
+                            # ---------------------------
+                            # ✅ YOUR TEAM GOAL => FULL CELEBRATION (existing logic)
+                            # ---------------------------
                             if jersey is not None and scorer_team:
                                 try:
                                     jersey_int = int(jersey)
                                     fg_color, bg_color = get_team_colors(scorer_team)
 
                                     lcd.show_text("GOAL!!!", f"{scorer_team} #{jersey_int}")
-
                                     leds.goal_matrix_animation(jersey_int, fg=fg_color, bg=bg_color)
 
                                 except Exception as e:
