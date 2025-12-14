@@ -118,7 +118,14 @@ def main():
 
                             log(f"GOAL DETECTED! scorer={scorer.get('fullName')} jersey={jersey} team={scorer_team}")
 
-                            # show jersey number with scorer team colors
+                            # countdown then backlight animation
+                            local_delay = delay_ctrl.get_delay()
+                            lcd.show_text("GOAL DETECTED", f"Wait {local_delay}s")
+                            log(f"Waiting {local_delay}s before triggering animation...")
+                            for i in range(local_delay, 0, -1):
+                                log(f"Countdown: {i}s remaining")
+                                time.sleep(1)
+
                             if scorer_team and scorer_team != my_team:
                                 lcd.show_text("GOAL AGAINST", f"{scorer_team} scored")
                                 try:
@@ -149,15 +156,7 @@ def main():
                                     lcd.show_text("GOAL!!!", "JERSEY ERR")
                             else:
                                 lcd.show_text("GOAL!!!", "JERSEY N/A")
-
-                            # countdown then backlight animation
-                            local_delay = delay_ctrl.get_delay()
-                            lcd.show_text("GOAL DETECTED", f"Wait {local_delay}s")
-                            log(f"Waiting {local_delay}s before triggering animation...")
-                            for i in range(local_delay, 0, -1):
-                                log(f"Countdown: {i}s remaining")
-                                time.sleep(1)
-
+                                
                             lcd.show_text("GOAL!!!", "GO HABS GO")
                             leds.goal_flash_sequence()
 
