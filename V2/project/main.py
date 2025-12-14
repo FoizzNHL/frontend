@@ -130,19 +130,19 @@ def main():
                                 lcd.show_text("GOAL AGAINST", f"{scorer_team} scored")
                                 try:
                                     # use your team colors (or swap to scorer_team if you prefer)
-                                    fg, bg = get_team_colors(my_team)
+                                    fg, bg = get_team_colors(scorer_team)
                                     leds.matrix.emoji_animation("sad", fg=fg, bg=bg, pulses=4)
                                     log("Opponent goal -> sad emoji shown. (No jersey / no flash)")
                                 except Exception as e:
                                     log(f"Opponent sad emoji error: {e}")
                                     lcd.show_text("GOAL AGAINST", "EMOJI ERR")
 
-                                # IMPORTANT: don't run the rest of the goal celebration logic
+                                # ✅ still schedule the "state of the game" emoji 20s later
+                                emoji_due_at = time.time() + 20
+                                log("Score-based emoji scheduled in 20 seconds (after opponent goal).")
+
                                 continue
 
-                            # ---------------------------
-                            # ✅ YOUR TEAM GOAL => FULL CELEBRATION (existing logic)
-                            # ---------------------------
                             if jersey is not None and scorer_team:
                                 try:
                                     jersey_int = int(jersey)
@@ -156,7 +156,7 @@ def main():
                                     lcd.show_text("GOAL!!!", "JERSEY ERR")
                             else:
                                 lcd.show_text("GOAL!!!", "JERSEY N/A")
-                                
+
                             lcd.show_text("GOAL!!!", "GO HABS GO")
                             leds.goal_flash_sequence()
 
