@@ -18,6 +18,15 @@
     "team": "SJS"
   },
   {
+    "id": 8484994,
+    "fullName": "Igor Chernyshov",
+    "position": "L",
+    "number": 92,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/SJS/8484994.png",
+    "team": "SJS"
+  },
+  {
     "id": 8480848,
     "fullName": "Ty Dellandrea",
     "position": "C",
@@ -69,15 +78,6 @@
     "number": 96,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/SJS/8480798.png",
-    "team": "SJS"
-  },
-  {
-    "id": 8485402,
-    "fullName": "Michael Misa",
-    "position": "C",
-    "number": 77,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/SJS/8485402.png",
     "team": "SJS"
   },
   {

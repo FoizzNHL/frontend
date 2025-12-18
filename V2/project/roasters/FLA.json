@@ -126,6 +126,15 @@
     "team": "FLA"
   },
   {
+    "id": 8480021,
+    "fullName": "Jack Studnicka",
+    "position": "C",
+    "number": 53,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8480021.png",
+    "team": "FLA"
+  },
+  {
     "id": 8477409,
     "fullName": "Carter Verhaeghe",
     "position": "C",
@@ -141,15 +150,6 @@
     "number": 26,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8484304.png",
-    "team": "FLA"
-  },
-  {
-    "id": 8481600,
-    "fullName": "Tobias Bjornfot",
-    "position": "D",
-    "number": 22,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/FLA/8481600.png",
     "team": "FLA"
   },
   {

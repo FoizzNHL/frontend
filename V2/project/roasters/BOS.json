@@ -9,12 +9,12 @@
     "team": "BOS"
   },
   {
-    "id": 8481556,
-    "fullName": "John Beecher",
-    "position": "C",
-    "number": 19,
+    "id": 8481712,
+    "fullName": "Matěj  Blümel",
+    "position": "R",
+    "number": 13,
     "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BOS/8481556.png",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BOS/8481712.png",
     "team": "BOS"
   },
   {
@@ -108,6 +108,15 @@
     "team": "BOS"
   },
   {
+    "id": 8482634,
+    "fullName": "Alex Steeves",
+    "position": "C",
+    "number": 21,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BOS/8482634.png",
+    "team": "BOS"
+  },
+  {
     "id": 8479705,
     "fullName": "Jeffrey Viel",
     "position": "L",
@@ -135,6 +144,15 @@
     "team": "BOS"
   },
   {
+    "id": 8480828,
+    "fullName": "Michael Callahan",
+    "position": "D",
+    "number": 79,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BOS/8480828.png",
+    "team": "BOS"
+  },
+  {
     "id": 8480887,
     "fullName": "Jordan Harris",
     "position": "D",
@@ -150,6 +168,15 @@
     "number": 20,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BOS/8480035.png",
+    "team": "BOS"
+  },
+  {
+    "id": 8481609,
+    "fullName": "Vladislav Kolyachonok",
+    "position": "D",
+    "number": 74,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BOS/8481609.png",
     "team": "BOS"
   },
   {
@@ -186,6 +213,15 @@
     "number": 26,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BOS/8479369.png",
+    "team": "BOS"
+  },
+  {
+    "id": 8481599,
+    "fullName": "Victor Soderstrom",
+    "position": "D",
+    "number": 29,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BOS/8481599.png",
     "team": "BOS"
   },
   {

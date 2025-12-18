@@ -36,15 +36,6 @@
     "team": "BUF"
   },
   {
-    "id": 8477419,
-    "fullName": "Mason Geertsen",
-    "position": "L",
-    "number": 55,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BUF/8477419.png",
-    "team": "BUF"
-  },
-  {
     "id": 8478413,
     "fullName": "Jordan Greenway",
     "position": "L",
@@ -126,15 +117,6 @@
     "team": "BUF"
   },
   {
-    "id": 8482765,
-    "fullName": "Isak Rosen",
-    "position": "R",
-    "number": 63,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BUF/8482765.png",
-    "team": "BUF"
-  },
-  {
     "id": 8479420,
     "fullName": "Tage Thompson",
     "position": "C",
@@ -180,12 +162,12 @@
     "team": "BUF"
   },
   {
-    "id": 8481708,
-    "fullName": "Zac Jones",
+    "id": 8480839,
+    "fullName": "Rasmus Dahlin",
     "position": "D",
-    "number": 28,
+    "number": 26,
     "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BUF/8481708.png",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BUF/8480839.png",
     "team": "BUF"
   },
   {
@@ -195,6 +177,15 @@
     "number": 8,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BUF/8480891.png",
+    "team": "BUF"
+  },
+  {
+    "id": 8484305,
+    "fullName": "Zach Metsa",
+    "position": "D",
+    "number": 73,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BUF/8484305.png",
     "team": "BUF"
   },
   {

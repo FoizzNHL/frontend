@@ -1,5 +1,14 @@
 [
   {
+    "id": 8477979,
+    "fullName": "Nicolas Aube-Kubel",
+    "position": "R",
+    "number": 16,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MIN/8477979.png",
+    "team": "MIN"
+  },
+  {
     "id": 8481557,
     "fullName": "Matt Boldy",
     "position": "L",
@@ -81,15 +90,6 @@
     "team": "MIN"
   },
   {
-    "id": 8482079,
-    "fullName": "Marco Rossi",
-    "position": "C",
-    "number": 23,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MIN/8482079.png",
-    "team": "MIN"
-  },
-  {
     "id": 8481477,
     "fullName": "Nico Sturm",
     "position": "C",
@@ -153,21 +153,21 @@
     "team": "MIN"
   },
   {
-    "id": 8484798,
-    "fullName": "Zeev Buium",
-    "position": "D",
-    "number": 8,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MIN/8484798.png",
-    "team": "MIN"
-  },
-  {
     "id": 8482122,
     "fullName": "Brock Faber",
     "position": "D",
     "number": 7,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MIN/8482122.png",
+    "team": "MIN"
+  },
+  {
+    "id": 8480800,
+    "fullName": "Quinn Hughes",
+    "position": "D",
+    "number": 43,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MIN/8480800.png",
     "team": "MIN"
   },
   {
@@ -189,12 +189,39 @@
     "team": "MIN"
   },
   {
+    "id": 8482641,
+    "fullName": "Matt Kiersted",
+    "position": "D",
+    "number": 26,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MIN/8482641.png",
+    "team": "MIN"
+  },
+  {
+    "id": 8482781,
+    "fullName": "Carson Lambos",
+    "position": "D",
+    "number": 71,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MIN/8482781.png",
+    "team": "MIN"
+  },
+  {
     "id": 8478136,
     "fullName": "Jake Middleton",
     "position": "D",
     "number": 5,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MIN/8478136.png",
+    "team": "MIN"
+  },
+  {
+    "id": 8483766,
+    "fullName": "David Spacek",
+    "position": "D",
+    "number": 82,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MIN/8483766.png",
     "team": "MIN"
   },
   {

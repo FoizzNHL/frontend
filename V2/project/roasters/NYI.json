@@ -36,6 +36,15 @@
     "team": "NYI"
   },
   {
+    "id": 8483553,
+    "fullName": "Marc Gatcomb",
+    "position": "C",
+    "number": 16,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NYI/8483553.png",
+    "team": "NYI"
+  },
+  {
     "id": 8482476,
     "fullName": "Emil Heineman",
     "position": "L",
@@ -195,6 +204,15 @@
     "number": 48,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NYI/8485366.png",
+    "team": "NYI"
+  },
+  {
+    "id": 8481569,
+    "fullName": "Marshall Warren",
+    "position": "D",
+    "number": 41,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NYI/8481569.png",
     "team": "NYI"
   },
   {

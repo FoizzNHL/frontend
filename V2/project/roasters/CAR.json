@@ -81,15 +81,6 @@
     "team": "CAR"
   },
   {
-    "id": 8484203,
-    "fullName": "Bradly Nadeau",
-    "position": "L",
-    "number": 29,
-    "shoots": "R",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CAR/8484203.png",
-    "team": "CAR"
-  },
-  {
     "id": 8480762,
     "fullName": "Eric Robinson",
     "position": "L",
@@ -168,15 +159,6 @@
     "number": 21,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CAR/8482100.png",
-    "team": "CAR"
-  },
-  {
-    "id": 8482911,
-    "fullName": "Joel Nystrom",
-    "position": "D",
-    "number": 64,
-    "shoots": "R",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CAR/8482911.png",
     "team": "CAR"
   },
   {

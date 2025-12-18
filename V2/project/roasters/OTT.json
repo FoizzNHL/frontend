@@ -63,6 +63,15 @@
     "team": "OTT"
   },
   {
+    "id": 8483676,
+    "fullName": "Stephen Halliday",
+    "position": "C",
+    "number": 83,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/OTT/8483676.png",
+    "team": "OTT"
+  },
+  {
     "id": 8480245,
     "fullName": "Olle Lycksell",
     "position": "R",
@@ -132,6 +141,15 @@
     "number": 72,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/OTT/8478469.png",
+    "team": "OTT"
+  },
+  {
+    "id": 8478502,
+    "fullName": "Dennis Gilbert",
+    "position": "D",
+    "number": 6,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/OTT/8478502.png",
     "team": "OTT"
   },
   {

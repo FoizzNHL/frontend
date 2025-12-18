@@ -1,11 +1,11 @@
 [
   {
-    "id": 8478104,
-    "fullName": "Sammy Blais",
-    "position": "L",
-    "number": 79,
+    "id": 8484158,
+    "fullName": "Easton Cowan",
+    "position": "R",
+    "number": 53,
     "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8478104.png",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8484158.png",
     "team": "TOR"
   },
   {
@@ -189,6 +189,15 @@
     "team": "TOR"
   },
   {
+    "id": 8479442,
+    "fullName": "Troy Stecher",
+    "position": "D",
+    "number": 28,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8479442.png",
+    "team": "TOR"
+  },
+  {
     "id": 8475690,
     "fullName": "Chris Tanev",
     "position": "D",
@@ -198,12 +207,21 @@
     "team": "TOR"
   },
   {
-    "id": 8480051,
-    "fullName": "Cayden Primeau",
-    "position": "G",
-    "number": 30,
+    "id": 8481567,
+    "fullName": "Henry Thrun",
+    "position": "D",
+    "number": 3,
     "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8480051.png",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8481567.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8483710,
+    "fullName": "Dennis Hildeby",
+    "position": "G",
+    "number": 35,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8483710.png",
     "team": "TOR"
   },
   {
@@ -213,6 +231,15 @@
     "number": 41,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8476932.png",
+    "team": "TOR"
+  },
+  {
+    "id": 8479361,
+    "fullName": "Joseph Woll",
+    "position": "G",
+    "number": 60,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/TOR/8479361.png",
     "team": "TOR"
   }
 ]

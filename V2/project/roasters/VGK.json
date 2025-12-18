@@ -9,6 +9,15 @@
     "team": "VGK"
   },
   {
+    "id": 8483890,
+    "fullName": "Braeden Bowman",
+    "position": "R",
+    "number": 42,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VGK/8483890.png",
+    "team": "VGK"
+  },
+  {
     "id": 8481604,
     "fullName": "Pavel Dorofeyev",
     "position": "R",
@@ -189,21 +198,21 @@
     "team": "VGK"
   },
   {
+    "id": 8479394,
+    "fullName": "Carter Hart",
+    "position": "G",
+    "number": 79,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VGK/8479394.png",
+    "team": "VGK"
+  },
+  {
     "id": 8478499,
     "fullName": "Adin Hill",
     "position": "G",
     "number": 33,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VGK/8478499.png",
-    "team": "VGK"
-  },
-  {
-    "id": 8482761,
-    "fullName": "Carl Lindbom",
-    "position": "G",
-    "number": 30,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VGK/8482761.png",
     "team": "VGK"
   },
   {

@@ -207,6 +207,15 @@
     "team": "ANA"
   },
   {
+    "id": 8478024,
+    "fullName": "Ville Husso",
+    "position": "G",
+    "number": 33,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/ANA/8478024.png",
+    "team": "ANA"
+  },
+  {
     "id": 8475852,
     "fullName": "Petr Mrazek",
     "position": "G",

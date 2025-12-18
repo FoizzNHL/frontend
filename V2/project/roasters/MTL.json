@@ -9,8 +9,17 @@
     "team": "MTL"
   },
   {
+    "id": 8483424,
+    "fullName": "Owen Beck",
+    "position": "C",
+    "number": 62,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MTL/8483424.png",
+    "team": "MTL"
+  },
+  {
     "id": 8482737,
-    "fullName": "Zack Bolduc",
+    "fullName": "Zachary Bolduc",
     "position": "R",
     "number": 76,
     "shoots": "L",
@@ -33,6 +42,15 @@
     "number": 77,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MTL/8481523.png",
+    "team": "MTL"
+  },
+  {
+    "id": 8483728,
+    "fullName": "Jared Davidson",
+    "position": "C",
+    "number": 49,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MTL/8483728.png",
     "team": "MTL"
   },
   {
@@ -108,6 +126,15 @@
     "team": "MTL"
   },
   {
+    "id": 8480074,
+    "fullName": "Alexandre Texier",
+    "position": "L",
+    "number": 85,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MTL/8480074.png",
+    "team": "MTL"
+  },
+  {
     "id": 8480813,
     "fullName": "Joe Veleno",
     "position": "C",
@@ -132,6 +159,15 @@
     "number": 53,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MTL/8480865.png",
+    "team": "MTL"
+  },
+  {
+    "id": 8483686,
+    "fullName": "Adam Engstrom",
+    "position": "D",
+    "number": 42,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MTL/8483686.png",
     "team": "MTL"
   },
   {
@@ -189,8 +225,17 @@
     "team": "MTL"
   },
   {
+    "id": 8484170,
+    "fullName": "Jacob Fowler",
+    "position": "G",
+    "number": 32,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/MTL/8484170.png",
+    "team": "MTL"
+  },
+  {
     "id": 8478470,
-    "fullName": "Sam Montembeault",
+    "fullName": "Samuel Montembeault",
     "position": "G",
     "number": 35,
     "shoots": "L",

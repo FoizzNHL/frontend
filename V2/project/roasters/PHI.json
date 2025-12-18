@@ -72,6 +72,14 @@
     "team": "PHI"
   },
   {
+    "id": 8479336,
+    "fullName": "Carl Grundstrom",
+    "position": "R",
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8479336.png",
+    "team": "PHI"
+  },
+  {
     "id": 8477903,
     "fullName": "Garnet Hathaway",
     "position": "R",
@@ -135,21 +143,21 @@
     "team": "PHI"
   },
   {
-    "id": 8480874,
-    "fullName": "Adam Ginning",
-    "position": "D",
-    "number": 13,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8480874.png",
-    "team": "PHI"
-  },
-  {
     "id": 8478454,
     "fullName": "Noah Juulsen",
     "position": "D",
     "number": 47,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8478454.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8477499,
+    "fullName": "Rasmus Ristolainen",
+    "position": "D",
+    "number": 55,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8477499.png",
     "team": "PHI"
   },
   {

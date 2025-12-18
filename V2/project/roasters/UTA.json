@@ -1,5 +1,14 @@
 [
   {
+    "id": 8484388,
+    "fullName": "Daniil But",
+    "position": "L",
+    "number": 19,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/UTA/8484388.png",
+    "team": "UTA"
+  },
+  {
     "id": 8479619,
     "fullName": "Michael Carcone",
     "position": "L",
@@ -90,15 +99,6 @@
     "team": "UTA"
   },
   {
-    "id": 8479291,
-    "fullName": "Kevin Rooney",
-    "position": "C",
-    "number": 25,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/UTA/8479291.png",
-    "team": "UTA"
-  },
-  {
     "id": 8477951,
     "fullName": "Nick Schmaltz",
     "position": "C",
@@ -153,6 +153,15 @@
     "team": "UTA"
   },
   {
+    "id": 8480434,
+    "fullName": "Sean Durzi",
+    "position": "D",
+    "number": 50,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/UTA/8480434.png",
+    "team": "UTA"
+  },
+  {
     "id": 8478507,
     "fullName": "John Marino",
     "position": "D",
@@ -186,15 +195,6 @@
     "number": 98,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/UTA/8479410.png",
-    "team": "UTA"
-  },
-  {
-    "id": 8484386,
-    "fullName": "Dmitri Simashev",
-    "position": "D",
-    "number": 26,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/UTA/8484386.png",
     "team": "UTA"
   },
   {

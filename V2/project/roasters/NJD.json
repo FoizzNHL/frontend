@@ -27,6 +27,15 @@
     "team": "NJD"
   },
   {
+    "id": 8481065,
+    "fullName": "Angus Crookshank",
+    "position": "C",
+    "number": 36,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NJD/8481065.png",
+    "team": "NJD"
+  },
+  {
     "id": 8474149,
     "fullName": "Evgenii Dadonov",
     "position": "L",
@@ -63,15 +72,6 @@
     "team": "NJD"
   },
   {
-    "id": 8483531,
-    "fullName": "Brian Halonen",
-    "position": "L",
-    "number": 48,
-    "shoots": "R",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NJD/8483531.png",
-    "team": "NJD"
-  },
-  {
     "id": 8480002,
     "fullName": "Nico Hischier",
     "position": "C",
@@ -99,6 +99,15 @@
     "team": "NJD"
   },
   {
+    "id": 8481594,
+    "fullName": "Nathan Légaré",
+    "position": "R",
+    "number": 37,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NJD/8481594.png",
+    "team": "NJD"
+  },
+  {
     "id": 8479772,
     "fullName": "Zack MacEwen",
     "position": "R",
@@ -114,15 +123,6 @@
     "number": 21,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NJD/8483397.png",
-    "team": "NJD"
-  },
-  {
-    "id": 8478414,
-    "fullName": "Timo Meier",
-    "position": "R",
-    "number": 28,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NJD/8478414.png",
     "team": "NJD"
   },
   {
@@ -150,6 +150,24 @@
     "number": 18,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NJD/8476292.png",
+    "team": "NJD"
+  },
+  {
+    "id": 8483841,
+    "fullName": "Xavier Parent",
+    "position": "C",
+    "number": 67,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NJD/8483841.png",
+    "team": "NJD"
+  },
+  {
+    "id": 8480884,
+    "fullName": "Calen Addison",
+    "position": "D",
+    "number": 2,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NJD/8480884.png",
     "team": "NJD"
   },
   {

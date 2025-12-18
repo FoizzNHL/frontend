@@ -81,15 +81,6 @@
     "team": "PIT"
   },
   {
-    "id": 8479533,
-    "fullName": "Joona Koppanen",
-    "position": "L",
-    "number": 15,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PIT/8479533.png",
-    "team": "PIT"
-  },
-  {
     "id": 8481481,
     "fullName": "Blake Lizotte",
     "position": "C",
@@ -114,6 +105,15 @@
     "number": 39,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PIT/8477511.png",
+    "team": "PIT"
+  },
+  {
+    "id": 8483487,
+    "fullName": "Rutger McGroarty",
+    "position": "R",
+    "number": 2,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PIT/8483487.png",
     "team": "PIT"
   },
   {
@@ -144,15 +144,6 @@
     "team": "PIT"
   },
   {
-    "id": 8481577,
-    "fullName": "Philip Tomasino",
-    "position": "R",
-    "number": 53,
-    "shoots": "R",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PIT/8481577.png",
-    "team": "PIT"
-  },
-  {
     "id": 8484839,
     "fullName": "Harrison Brunicke",
     "position": "D",
@@ -168,15 +159,6 @@
     "number": 75,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PIT/8477365.png",
-    "team": "PIT"
-  },
-  {
-    "id": 8476856,
-    "fullName": "Mathew Dumba",
-    "position": "D",
-    "number": 24,
-    "shoots": "R",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PIT/8476856.png",
     "team": "PIT"
   },
   {
@@ -207,6 +189,15 @@
     "team": "PIT"
   },
   {
+    "id": 8476967,
+    "fullName": "Brett Kulak",
+    "position": "D",
+    "number": 77,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PIT/8476967.png",
+    "team": "PIT"
+  },
+  {
     "id": 8471724,
     "fullName": "Kris Letang",
     "position": "D",
@@ -225,6 +216,15 @@
     "team": "PIT"
   },
   {
+    "id": 8481030,
+    "fullName": "Jack St. Ivany",
+    "position": "D",
+    "number": 3,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PIT/8481030.png",
+    "team": "PIT"
+  },
+  {
     "id": 8478450,
     "fullName": "Parker Wotherspoon",
     "position": "D",
@@ -234,30 +234,21 @@
     "team": "PIT"
   },
   {
-    "id": 8477465,
-    "fullName": "Tristan Jarry",
-    "position": "G",
-    "number": 35,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PIT/8477465.png",
-    "team": "PIT"
-  },
-  {
-    "id": 8483703,
-    "fullName": "Sergei Murashov",
-    "position": "G",
-    "number": 1,
-    "shoots": "R",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PIT/8483703.png",
-    "team": "PIT"
-  },
-  {
     "id": 8481668,
     "fullName": "Arturs Silovs",
     "position": "G",
     "number": 37,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PIT/8481668.png",
+    "team": "PIT"
+  },
+  {
+    "id": 8479973,
+    "fullName": "Stuart Skinner",
+    "position": "G",
+    "number": 74,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PIT/8479973.png",
     "team": "PIT"
   }
 ]

@@ -9,15 +9,6 @@
     "team": "DET"
   },
   {
-    "id": 8481013,
-    "fullName": "Jonatan Berggren",
-    "position": "R",
-    "number": 48,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8481013.png",
-    "team": "DET"
-  },
-  {
     "id": 8477456,
     "fullName": "J.T. Compher",
     "position": "L",
@@ -33,6 +24,15 @@
     "number": 18,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8477429.png",
+    "team": "DET"
+  },
+  {
+    "id": 8484160,
+    "fullName": "Nate Danielson",
+    "position": "C",
+    "number": 29,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8484160.png",
     "team": "DET"
   },
   {
@@ -78,6 +78,15 @@
     "number": 71,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8477946.png",
+    "team": "DET"
+  },
+  {
+    "id": 8481077,
+    "fullName": "John Leonard",
+    "position": "L",
+    "number": 43,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DET/8481077.png",
     "team": "DET"
   },
   {

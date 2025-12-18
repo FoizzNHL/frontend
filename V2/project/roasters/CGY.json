@@ -9,6 +9,15 @@
     "team": "CGY"
   },
   {
+    "id": 8481556,
+    "fullName": "John Beecher",
+    "position": "C",
+    "number": 18,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CGY/8481556.png",
+    "team": "CGY"
+  },
+  {
     "id": 8476399,
     "fullName": "Blake Coleman",
     "position": "L",
@@ -63,21 +72,21 @@
     "team": "CGY"
   },
   {
+    "id": 8478211,
+    "fullName": "Dryden Hunt",
+    "position": "L",
+    "number": 15,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CGY/8478211.png",
+    "team": "CGY"
+  },
+  {
     "id": 8475172,
     "fullName": "Nazem Kadri",
     "position": "C",
     "number": 91,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CGY/8475172.png",
-    "team": "CGY"
-  },
-  {
-    "id": 8477993,
-    "fullName": "Justin Kirkland",
-    "position": "C",
-    "number": 23,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CGY/8477993.png",
     "team": "CGY"
   },
   {
@@ -153,6 +162,15 @@
     "team": "CGY"
   },
   {
+    "id": 8484150,
+    "fullName": "Hunter Brzustewicz",
+    "position": "D",
+    "number": 48,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CGY/8484150.png",
+    "team": "CGY"
+  },
+  {
     "id": 8477810,
     "fullName": "Joel Hanley",
     "position": "D",
@@ -177,15 +195,6 @@
     "number": 94,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CGY/8481167.png",
-    "team": "CGY"
-  },
-  {
-    "id": 8484768,
-    "fullName": "Zayne Parekh",
-    "position": "D",
-    "number": 19,
-    "shoots": "R",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CGY/8484768.png",
     "team": "CGY"
   },
   {

@@ -1,5 +1,14 @@
 [
   {
+    "id": 8484529,
+    "fullName": "Connor Clattenburg",
+    "position": "C",
+    "number": 64,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8484529.png",
+    "team": "EDM"
+  },
+  {
     "id": 8477934,
     "fullName": "Leon Draisaitl",
     "position": "C",
@@ -27,12 +36,12 @@
     "team": "EDM"
   },
   {
-    "id": 8483455,
-    "fullName": "Isaac Howard",
-    "position": "L",
-    "number": 53,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8483455.png",
+    "id": 8485511,
+    "fullName": "Quinn Hutson",
+    "position": "R",
+    "number": 23,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8485511.png",
     "team": "EDM"
   },
   {
@@ -51,6 +60,15 @@
     "number": 13,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8477406.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8479368,
+    "fullName": "Max Jones",
+    "position": "L",
+    "number": 46,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8479368.png",
     "team": "EDM"
   },
   {
@@ -171,15 +189,6 @@
     "team": "EDM"
   },
   {
-    "id": 8476967,
-    "fullName": "Brett Kulak",
-    "position": "D",
-    "number": 27,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8476967.png",
-    "team": "EDM"
-  },
-  {
     "id": 8477498,
     "fullName": "Darnell Nurse",
     "position": "D",
@@ -198,12 +207,21 @@
     "team": "EDM"
   },
   {
-    "id": 8479442,
-    "fullName": "Troy Stecher",
+    "id": 8481056,
+    "fullName": "Spencer Stastney",
     "position": "D",
-    "number": 51,
-    "shoots": "R",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8479442.png",
+    "number": 24,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8481056.png",
+    "team": "EDM"
+  },
+  {
+    "id": 8479388,
+    "fullName": "Riley Stillman",
+    "position": "D",
+    "number": 61,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8479388.png",
     "team": "EDM"
   },
   {
@@ -216,21 +234,21 @@
     "team": "EDM"
   },
   {
+    "id": 8477465,
+    "fullName": "Tristan Jarry",
+    "position": "G",
+    "number": 35,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8477465.png",
+    "team": "EDM"
+  },
+  {
     "id": 8475717,
     "fullName": "Calvin Pickard",
     "position": "G",
     "number": 30,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8475717.png",
-    "team": "EDM"
-  },
-  {
-    "id": 8479973,
-    "fullName": "Stuart Skinner",
-    "position": "G",
-    "number": 74,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/EDM/8479973.png",
     "team": "EDM"
   }
 ]

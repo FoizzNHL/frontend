@@ -45,15 +45,6 @@
     "team": "NSH"
   },
   {
-    "id": 8482742,
-    "fullName": "Zachary L'Heureux",
-    "position": "L",
-    "number": 68,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NSH/8482742.png",
-    "team": "NSH"
-  },
-  {
     "id": 8476539,
     "fullName": "Jonathan Marchessault",
     "position": "C",
@@ -78,6 +69,15 @@
     "number": 90,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NSH/8475158.png",
+    "team": "NSH"
+  },
+  {
+    "id": 8483513,
+    "fullName": "Reid Schaefer",
+    "position": "L",
+    "number": 49,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NSH/8483513.png",
     "team": "NSH"
   },
   {
@@ -177,15 +177,6 @@
     "number": 76,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NSH/8476869.png",
-    "team": "NSH"
-  },
-  {
-    "id": 8481056,
-    "fullName": "Spencer Stastney",
-    "position": "D",
-    "number": 24,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NSH/8481056.png",
     "team": "NSH"
   },
   {

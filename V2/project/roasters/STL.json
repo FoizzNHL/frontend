@@ -1,5 +1,14 @@
 [
   {
+    "id": 8481013,
+    "fullName": "Jonatan Berggren",
+    "position": "R",
+    "number": 29,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/STL/8481013.png",
+    "team": "STL"
+  },
+  {
     "id": 8475760,
     "fullName": "Nick Bjugstad",
     "position": "C",
@@ -24,6 +33,15 @@
     "number": 54,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/STL/8484164.png",
+    "team": "STL"
+  },
+  {
+    "id": 8477952,
+    "fullName": "Robby Fabbri",
+    "position": "C",
+    "number": 9,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/STL/8477952.png",
     "team": "STL"
   },
   {
@@ -54,6 +72,15 @@
     "team": "STL"
   },
   {
+    "id": 8479644,
+    "fullName": "Matt Luff",
+    "position": "R",
+    "number": 39,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/STL/8479644.png",
+    "team": "STL"
+  },
+  {
     "id": 8482089,
     "fullName": "Jake Neighbours",
     "position": "L",
@@ -81,6 +108,15 @@
     "team": "STL"
   },
   {
+    "id": 8484230,
+    "fullName": "Otto Stenberg",
+    "position": "C",
+    "number": 28,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/STL/8484230.png",
+    "team": "STL"
+  },
+  {
     "id": 8476897,
     "fullName": "Oskar Sundqvist",
     "position": "C",
@@ -96,15 +132,6 @@
     "number": 22,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/STL/8480459.png",
-    "team": "STL"
-  },
-  {
-    "id": 8480074,
-    "fullName": "Alexandre Texier",
-    "position": "L",
-    "number": 9,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/STL/8480074.png",
     "team": "STL"
   },
   {

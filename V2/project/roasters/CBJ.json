@@ -2,7 +2,7 @@
   {
     "id": 8479944,
     "fullName": "Zachary Aston-Reese",
-    "position": "C",
+    "position": "L",
     "number": 27,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CBJ/8479944.png",
@@ -27,21 +27,21 @@
     "team": "CBJ"
   },
   {
-    "id": 8483432,
-    "fullName": "Luca Del Bel Belluz",
-    "position": "C",
-    "number": 65,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CBJ/8483432.png",
-    "team": "CBJ"
-  },
-  {
     "id": 8484166,
     "fullName": "Adam Fantilli",
     "position": "C",
     "number": 19,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CBJ/8484166.png",
+    "team": "CBJ"
+  },
+  {
+    "id": 8476867,
+    "fullName": "Brendan Gaunce",
+    "position": "C",
+    "number": 16,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CBJ/8476867.png",
     "team": "CBJ"
   },
   {
@@ -64,7 +64,7 @@
   },
   {
     "id": 8480806,
-    "fullName": "Isac Lundestrom",
+    "fullName": "Isac Lundeström",
     "position": "C",
     "number": 21,
     "shoots": "L",
@@ -96,6 +96,15 @@
     "number": 24,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CBJ/8479671.png",
+    "team": "CBJ"
+  },
+  {
+    "id": 8484214,
+    "fullName": "Luca Pinelli",
+    "position": "C",
+    "number": 53,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CBJ/8484214.png",
     "team": "CBJ"
   },
   {
@@ -162,15 +171,6 @@
     "team": "CBJ"
   },
   {
-    "id": 8478062,
-    "fullName": "Dysin Mayo",
-    "position": "D",
-    "number": 37,
-    "shoots": "R",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CBJ/8478062.png",
-    "team": "CBJ"
-  },
-  {
     "id": 8478500,
     "fullName": "Ivan Provorov",
     "position": "D",
@@ -186,6 +186,15 @@
     "number": 78,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CBJ/8476923.png",
+    "team": "CBJ"
+  },
+  {
+    "id": 8474090,
+    "fullName": "Brendan Smith",
+    "position": "D",
+    "number": 7,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CBJ/8474090.png",
     "team": "CBJ"
   },
   {

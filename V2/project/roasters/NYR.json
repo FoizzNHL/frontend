@@ -1,5 +1,14 @@
 [
   {
+    "id": 8482132,
+    "fullName": "Brett Berard",
+    "position": "L",
+    "number": 65,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NYR/8482132.png",
+    "team": "NYR"
+  },
+  {
     "id": 8477380,
     "fullName": "Jonny Brodzinski",
     "position": "C",
@@ -15,15 +24,6 @@
     "number": 39,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NYR/8475842.png",
-    "team": "NYR"
-  },
-  {
-    "id": 8482877,
-    "fullName": "Jaroslav Chmelar",
-    "position": "R",
-    "number": 49,
-    "shoots": "R",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NYR/8482877.png",
     "team": "NYR"
   },
   {
@@ -72,6 +72,15 @@
     "team": "NYR"
   },
   {
+    "id": 8482747,
+    "fullName": "Brennan Othmann",
+    "position": "L",
+    "number": 78,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NYR/8482747.png",
+    "team": "NYR"
+  },
+  {
     "id": 8478550,
     "fullName": "Artemi Panarin",
     "position": "L",
@@ -81,12 +90,12 @@
     "team": "NYR"
   },
   {
-    "id": 8481704,
-    "fullName": "Juuso Parssinen",
-    "position": "C",
-    "number": 71,
+    "id": 8484210,
+    "fullName": "Gabe Perreault",
+    "position": "R",
+    "number": 94,
     "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NYR/8481704.png",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NYR/8484210.png",
     "team": "NYR"
   },
   {
@@ -162,12 +171,12 @@
     "team": "NYR"
   },
   {
-    "id": 8482067,
-    "fullName": "Connor Mackey",
+    "id": 8482666,
+    "fullName": "Scott Morrow",
     "position": "D",
-    "number": 12,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NYR/8482067.png",
+    "number": 60,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/NYR/8482666.png",
     "team": "NYR"
   },
   {

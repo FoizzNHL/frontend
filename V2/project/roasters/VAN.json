@@ -9,15 +9,6 @@
     "team": "VAN"
   },
   {
-    "id": 8483395,
-    "fullName": "Arshdeep Bains",
-    "position": "L",
-    "number": 13,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8483395.png",
-    "team": "VAN"
-  },
-  {
     "id": 8476927,
     "fullName": "Teddy Blueger",
     "position": "C",
@@ -72,6 +63,15 @@
     "team": "VAN"
   },
   {
+    "id": 8480144,
+    "fullName": "David Kampf",
+    "position": "C",
+    "number": 64,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8480144.png",
+    "team": "VAN"
+  },
+  {
     "id": 8475169,
     "fullName": "Evander Kane",
     "position": "L",
@@ -90,30 +90,21 @@
     "team": "VAN"
   },
   {
-    "id": 8483476,
-    "fullName": "Jonathan Lekkerimäki",
-    "position": "R",
-    "number": 23,
-    "shoots": "R",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8483476.png",
-    "team": "VAN"
-  },
-  {
-    "id": 8476907,
-    "fullName": "Mackenzie MacEachern",
-    "position": "L",
-    "number": 20,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8476907.png",
-    "team": "VAN"
-  },
-  {
     "id": 8482055,
     "fullName": "Drew O'Connor",
     "position": "L",
     "number": 18,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8482055.png",
+    "team": "VAN"
+  },
+  {
+    "id": 8483499,
+    "fullName": "Liam Ohgren",
+    "position": "L",
+    "number": 92,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8483499.png",
     "team": "VAN"
   },
   {
@@ -135,12 +126,12 @@
     "team": "VAN"
   },
   {
-    "id": 8482117,
-    "fullName": "Lukas Reichel",
-    "position": "L",
-    "number": 73,
+    "id": 8482079,
+    "fullName": "Marco Rossi",
+    "position": "C",
+    "number": 93,
     "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8482117.png",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8482079.png",
     "team": "VAN"
   },
   {
@@ -162,6 +153,15 @@
     "team": "VAN"
   },
   {
+    "id": 8484798,
+    "fullName": "Zeev Buium",
+    "position": "D",
+    "number": 24,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8484798.png",
+    "team": "VAN"
+  },
+  {
     "id": 8475762,
     "fullName": "Derek Forbort",
     "position": "D",
@@ -180,30 +180,12 @@
     "team": "VAN"
   },
   {
-    "id": 8480800,
-    "fullName": "Quinn Hughes",
-    "position": "D",
-    "number": 43,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8480800.png",
-    "team": "VAN"
-  },
-  {
     "id": 8480058,
     "fullName": "P.O Joseph",
     "position": "D",
     "number": 7,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8480058.png",
-    "team": "VAN"
-  },
-  {
-    "id": 8483768,
-    "fullName": "Victor Mancini",
-    "position": "D",
-    "number": 90,
-    "shoots": "R",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8483768.png",
     "team": "VAN"
   },
   {
@@ -258,15 +240,6 @@
     "number": 32,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8480947.png",
-    "team": "VAN"
-  },
-  {
-    "id": 8480238,
-    "fullName": "Jiri Patera",
-    "position": "G",
-    "number": 30,
-    "shoots": "L",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/VAN/8480238.png",
     "team": "VAN"
   }
 ]

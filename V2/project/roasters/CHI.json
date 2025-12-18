@@ -81,6 +81,15 @@
     "team": "CHI"
   },
   {
+    "id": 8484185,
+    "fullName": "Nick Lardis",
+    "position": "L",
+    "number": 76,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CHI/8484185.png",
+    "team": "CHI"
+  },
+  {
     "id": 8481624,
     "fullName": "Ilya Mikheyev",
     "position": "R",
@@ -114,6 +123,15 @@
     "number": 86,
     "shoots": "L",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CHI/8476882.png",
+    "team": "CHI"
+  },
+  {
+    "id": 8476952,
+    "fullName": "Dominic Toninato",
+    "position": "C",
+    "number": 25,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CHI/8476952.png",
     "team": "CHI"
   },
   {
@@ -159,15 +177,6 @@
     "number": 5,
     "shoots": "R",
     "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CHI/8476473.png",
-    "team": "CHI"
-  },
-  {
-    "id": 8483506,
-    "fullName": "Sam Rinzel",
-    "position": "D",
-    "number": 6,
-    "shoots": "R",
-    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/CHI/8483506.png",
     "team": "CHI"
   },
   {
