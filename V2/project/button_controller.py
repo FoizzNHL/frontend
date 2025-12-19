@@ -16,13 +16,16 @@ class DelayController:
         self._press_start_time = None
         self._is_holding = False
 
+        # IMPORTANT:
+        # active_state=False inverts the logic so "pressed" triggers when the input goes LOW->HIGH (or vice versa)
+        # For an NC button ("always on unless pressed"), this usually makes callbacks match real presses.
         self.button = Button(
             config.BUTTON_PIN,
             pull_up=True,
+            active_state=False,   # ✅ invert logic for NC button
             bounce_time=0.05
         )
 
-        # Attach callbacks
         self.button.when_pressed = self._on_pressed
         self.button.when_released = self._on_released
 
@@ -59,7 +62,6 @@ class DelayController:
         press_duration = time.time() - self._press_start_time
 
         if press_duration < config.HOLD_THRESHOLD:
-            # Quick tap → increment delay
             self.delay_seconds += 1
             log(f"Quick tap detected → Delay incremented to {self.delay_seconds}s")
             self.lcd.show_delay_only(self.delay_seconds)
