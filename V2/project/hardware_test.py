@@ -1,81 +1,107 @@
-# button_controller.py
+#!/usr/bin/env python3
 import time
-from threading import Thread
-from gpiozero import Button
 
 import config
 from log_utils import log
+from lcd_display import LcdDisplay
+from led_controller import LedController
+from button_controller import DelayController
+from nhl_team_colors import get_team_colors
 
 
-class DelayController:
-    def __init__(self, lcd_display):
-        self.lcd = lcd_display
-        self.delay_seconds = config.DEFAULT_DELAY_SECONDS
+def safe_call(name, fn):
+    try:
+        return fn()
+    except Exception as e:
+        log(f"[{name}] ERROR: {e}")
+        return None
 
-        self._press_start_time = None
-        self._is_holding = False
 
-        self.button = Button(
-            config.BUTTON_PIN,
-            pull_up=True,
-            bounce_time=0.05
-        )
+def main():
+    log("Hardware test started.")
 
-        # If your button is "always on unless pressed",
-        # then when idle it's likely reading as pressed (True).
-        idle_is_pressed = self.button.is_pressed
-        log(f"Button init: value={self.button.value} is_pressed={idle_is_pressed}")
+    lcd = LcdDisplay()
+    leds = LedController()
+    delay_ctrl = DelayController(lcd)
 
-        # If idle reads as pressed, the wiring is inverted (NC behavior).
-        # So we treat RELEASE as a "physical press", and PRESS as "physical release".
-        self._invert = idle_is_pressed is True
+    # ---------- LCD BOOT ----------
+    safe_call("lcd.show_text", lambda: lcd.show_text("HW TEST", "Booting..."))
+    time.sleep(1)
 
-        if self._invert:
-            log("Detected inverted/NC button (idle reads pressed) → swapping callbacks")
-            self.button.when_pressed = self._on_released   # electrical press == physical release
-            self.button.when_released = self._on_pressed   # electrical release == physical press
-        else:
-            log("Detected normal button → normal callbacks")
-            self.button.when_pressed = self._on_pressed
-            self.button.when_released = self._on_released
+    # Show current delay value
+    d = safe_call("delay_ctrl.get_delay", lambda: delay_ctrl.get_delay())
+    if d is None:
+        d = 0
+    safe_call("lcd.show_delay_only", lambda: lcd.show_delay_only(d))
+    time.sleep(1)
 
-    # ---------- Public ----------
-    def get_delay(self) -> int:
-        return self.delay_seconds
+    # ---------- LED OFF ----------
+    safe_call("leds.turn_off", lambda: leds.turn_off())
+    safe_call("lcd.show_text", lambda: lcd.show_text("LED", "OFF"))
+    time.sleep(1)
 
-    # ---------- Internal helpers ----------
-    def _hold_worker(self):
-        time.sleep(config.HOLD_THRESHOLD)
+    # ---------- BASIC MATRIX / STRIP TESTS ----------
+    # Uses your team colors helper (pick any team abbrev you want)
+    team = (config.TEAM_ABBR or "MTL").upper()
+    fg, bg = get_team_colors(team)
 
-        if not self._is_holding:
-            return
+    # 1) Emoji pulse
+    safe_call("lcd.show_text", lambda: lcd.show_text("MATRIX", "Emoji test"))
+    safe_call("leds.matrix.emoji_animation", lambda: leds.matrix.emoji_animation("happy", fg=fg, bg=bg, pulses=3))
+    time.sleep(0.5)
 
-        log("Hold detected → decreasing delay continuously")
-        while self._is_holding and self.delay_seconds > 0:
-            self.delay_seconds -= 1
-            log(f"Delay updated (hold): {self.delay_seconds}s")
-            self.lcd.show_delay_only(self.delay_seconds)
-            time.sleep(config.DECREMENT_DELAY)
+    # 2) Jersey number test
+    safe_call("lcd.show_text", lambda: lcd.show_text("MATRIX", "Jersey # test"))
+    safe_call("leds.goal_matrix_animation", lambda: leds.goal_matrix_animation(31, fg=fg, bg=bg))
+    time.sleep(0.5)
 
-    def _on_pressed(self):
-        # This is "physical press" after inversion handling above
-        self._press_start_time = time.time()
-        self._is_holding = True
-        log("Button pressed (physical).")
+    # 3) Goal flash test (strip / whatever your LedController drives)
+    safe_call("lcd.show_text", lambda: lcd.show_text("STRIP", "Flash sequence"))
+    safe_call("leds.goal_flash_sequence", lambda: leds.goal_flash_sequence())
+    time.sleep(0.5)
 
-        Thread(target=self._hold_worker, daemon=True).start()
+    # ---------- BUTTON / DELAY LIVE TEST ----------
+    # Loop: show delay value live; if it changes, do a tiny LED pulse so you know input is working.
+    safe_call("lcd.show_text", lambda: lcd.show_text("BUTTON TEST", "Change delay"))
+    last_delay = None
+    last_pulse_at = 0
 
-    def _on_released(self):
-        # This is "physical release" after inversion handling above
-        self._is_holding = False
-        if self._press_start_time is None:
-            return
+    try:
+        while True:
+            d = safe_call("delay_ctrl.get_delay", lambda: delay_ctrl.get_delay())
+            if d is None:
+                d = 0
 
-        press_duration = time.time() - self._press_start_time
+            # Show it on LCD (your DelayController likely already does this, but we mirror it too)
+            safe_call("lcd.show_delay_only", lambda: lcd.show_delay_only(d))
 
-        if press_duration < config.HOLD_THRESHOLD:
-            self.delay_seconds += 1
-            log(f"Quick tap detected → Delay incremented to {self.delay_seconds}s")
-            self.lcd.show_delay_only(self.delay_seconds)
-        else:
-            log("Button released after hold (physical).")
+            if last_delay is None:
+                last_delay = d
+
+            # If delay changed, pulse an emoji quickly as feedback
+            if d != last_delay and (time.time() - last_pulse_at) > 0.8:
+                log(f"Delay changed: {last_delay} -> {d}")
+                safe_call("lcd.show_text", lambda: lcd.show_text("DELAY", f"{last_delay} -> {d}"))
+                safe_call(
+                    "leds.matrix.emoji_animation",
+                    lambda: leds.matrix.emoji_animation("wink", fg=fg, bg=bg, pulses=1)
+                )
+                last_delay = d
+                last_pulse_at = time.time()
+                # go back to delay display right after
+                safe_call("lcd.show_delay_only", lambda: lcd.show_delay_only(d))
+
+            time.sleep(0.2)
+
+    except KeyboardInterrupt:
+        log("Hardware test interrupted by user.")
+    finally:
+        safe_call("lcd.show_text", lambda: lcd.show_text("HW TEST", "Shutting down"))
+        time.sleep(0.8)
+        safe_call("lcd.clear", lambda: lcd.clear())
+        safe_call("leds.turn_off", lambda: leds.turn_off())
+        safe_call("lcd.close", lambda: lcd.close())
+
+
+if __name__ == "__main__":
+    main()
