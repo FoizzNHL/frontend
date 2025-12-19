@@ -68,6 +68,7 @@ def main():
 
     try:
         while True:
+            delay_ctrl.update()
             d = safe_call("delay_ctrl.get_delay", lambda: delay_ctrl.get_delay())
             if d is None:
                 d = 0
