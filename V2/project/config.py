@@ -14,12 +14,12 @@ LCD_ROWS = 2
 POLL_INTERVAL_SECONDS = 5
 
 # ---------- LED STRIP ----------
-LED_COUNT      = 15
+LED_COUNT      = 13
 LED_PIN        = 150
 LED_CHANNEL    = 0
 LED_FREQ_HZ    = 800000
 LED_DMA        = 10
-LED_BRIGHTNESS = 255
+LED_BRIGHTNESS = 60
 LED_INVERT     = False
 
 # ---------- BUTTON ----------

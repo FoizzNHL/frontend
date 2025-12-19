@@ -1,6 +1,7 @@
 # led_controller.py
 from matrix_number import MatrixNumberDisplay
 from screen_backlight_controller import ScreenBacklightController
+import config
 
 class LedController:
     def __init__(self):
@@ -16,10 +17,10 @@ class LedController:
 
         # B) Back-of-screen strip (example: 60 LEDs on GPIO 13 channel 1)
         self.backlight = ScreenBacklightController(
-            led_count=60,
-            led_pin=13,
+            led_count=config.LED_COUNT,
+            led_pin=config.LED_PIN,
             led_channel=1,     # channel 1 (important if using 13/18 combo)
-            brightness=128,
+            brightness=config.LED_BRIGHTNESS,
         )
 
     # ---- Number display API ----
