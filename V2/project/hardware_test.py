@@ -83,10 +83,6 @@ def main():
             if d != last_delay and (time.time() - last_pulse_at) > 0.8:
                 log(f"Delay changed: {last_delay} -> {d}")
                 safe_call("lcd.show_text", lambda: lcd.show_text("DELAY", f"{last_delay} -> {d}"))
-                safe_call(
-                    "leds.matrix.emoji_animation",
-                    lambda: leds.matrix.emoji_animation("wink", fg=fg, bg=bg, pulses=1)
-                )
                 last_delay = d
                 last_pulse_at = time.time()
                 # go back to delay display right after
