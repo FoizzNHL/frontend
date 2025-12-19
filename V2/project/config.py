@@ -14,7 +14,7 @@ LCD_ROWS = 2
 POLL_INTERVAL_SECONDS = 5
 
 # ---------- LED STRIP ----------
-LED_COUNT      = 150
+LED_COUNT      = 153
 LED_PIN        = 13
 LED_CHANNEL    = 0
 LED_FREQ_HZ    = 800000
