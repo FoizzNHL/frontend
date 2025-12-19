@@ -15,7 +15,7 @@ POLL_INTERVAL_SECONDS = 5
 
 # ---------- LED STRIP ----------
 LED_COUNT      = 15
-LED_PIN        = 19
+LED_PIN        = 150
 LED_CHANNEL    = 0
 LED_FREQ_HZ    = 800000
 LED_DMA        = 10
@@ -28,4 +28,4 @@ DECREMENT_DELAY  = 0.2
 HOLD_THRESHOLD   = 0.3
 
 # Initial delay
-DEFAULT_DELAY_SECONDS = 10
+DEFAULT_DELAY_SECONDS = 15
