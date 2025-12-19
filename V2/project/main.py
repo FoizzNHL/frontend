@@ -53,7 +53,7 @@ def main():
                     t_end = time.time() + config.POLL_INTERVAL_SECONDS
                     while time.time() < t_end:
                         delay_ctrl.update()
-                        time.sleep(0.05)time.sleep(config.POLL_INTERVAL_SECONDS)
+                        time.sleep(0.05)
                     continue
 
                 # ------------- ERROR -------------
