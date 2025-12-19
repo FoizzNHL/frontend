@@ -36,6 +36,7 @@ def main():
         while True:
             try:
                 data = fetch_game_now(config.TEAM_ABBR)
+                delay_ctrl.update()
 
                 # ------------- NO GAME -------------
                 if data.get("noGame"):
@@ -49,14 +50,20 @@ def main():
                     emoji_due_at = None
                     emoji_shown_for_game_id = None
 
-                    time.sleep(config.POLL_INTERVAL_SECONDS)
+                    t_end = time.time() + config.POLL_INTERVAL_SECONDS
+                    while time.time() < t_end:
+                        delay_ctrl.update()
+                        time.sleep(0.05)time.sleep(config.POLL_INTERVAL_SECONDS)
                     continue
 
                 # ------------- ERROR -------------
                 if not data.get("ok"):
                     log("Backend returned ok=false")
                     lcd.show_text("BACKEND ERR", "ok=false")
-                    time.sleep(config.POLL_INTERVAL_SECONDS)
+                    t_end = time.time() + config.POLL_INTERVAL_SECONDS
+                    while time.time() < t_end:
+                        delay_ctrl.update()
+                        time.sleep(0.05)
                     continue
 
                 # ------------- GAME DATA -------------
@@ -124,7 +131,11 @@ def main():
                             log(f"Waiting {local_delay}s before triggering animation...")
                             for i in range(local_delay, 0, -1):
                                 log(f"Countdown: {i}s remaining")
-                                time.sleep(1)
+                                # keep button responsive during countdown
+                                t_end = time.time() + 1
+                                while time.time() < t_end:
+                                    delay_ctrl.update()
+                                    time.sleep(0.05)
 
                             if scorer_team and scorer_team != my_team:
                                 lcd.show_text("GOAL AGAINST", f"{scorer_team} scored")
@@ -180,7 +191,10 @@ def main():
                 err_msg = str(e)[:config.LCD_COLS]
                 lcd.show_text("SCRIPT ERROR", err_msg)
 
-            time.sleep(config.POLL_INTERVAL_SECONDS)
+            t_end = time.time() + config.POLL_INTERVAL_SECONDS
+            while time.time() < t_end:
+                delay_ctrl.update()
+                time.sleep(0.05)
 
     except KeyboardInterrupt:
         log("Script interrupted by user.")
