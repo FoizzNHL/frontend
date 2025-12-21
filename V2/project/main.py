@@ -90,6 +90,7 @@ def main():
                 game_id = data.get("id")
                 state = data.get("state")
                 current_poll_interval = get_poll_interval_seconds(state)
+                log(f"Game state: {state}, Poll interval: {current_poll_interval}s")
 
                 # ------------- NEW GAME -------------
                 if game_id and game_id != last_game_id:
