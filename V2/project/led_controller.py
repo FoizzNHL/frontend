@@ -41,3 +41,4 @@ class LedController:
 
     def goal_matrix_animation(self, n, fg, bg):
         self.matrix.goal_number_animation(n, fg=fg, bg=bg)
+        self.backlight.goal_flash(flashes=8, on=(255,255,255), delay=0.10)

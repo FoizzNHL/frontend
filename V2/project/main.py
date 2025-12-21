@@ -169,7 +169,6 @@ def main():
                                 lcd.show_text("GOAL!!!", "JERSEY N/A")
 
                             lcd.show_text("GOAL!!!", "GO HABS GO")
-                            leds.goal_flash_sequence()
 
                             # ✅ schedule emoji 20s AFTER goal animation
                             emoji_due_at = time.time() + 20
