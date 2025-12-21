@@ -16,7 +16,7 @@ POLL_INTERVAL_SECONDS = 5
 # ---------- LED STRIP ----------
 LED_COUNT      = 153
 LED_PIN        = 13
-LED_CHANNEL    = 0
+LED_CHANNEL    = 1
 LED_FREQ_HZ    = 800000
 LED_DMA        = 10
 LED_BRIGHTNESS = 60
