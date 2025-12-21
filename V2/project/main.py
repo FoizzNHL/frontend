@@ -14,6 +14,13 @@ from button_controller import DelayController
 from nhl_team_colors import get_team_colors
 from emoji_state import pick_emoji_and_colors
 
+def get_poll_interval_seconds(state: str | None) -> int:
+    if state in ("LIVE", "CRIT"):
+        return 2
+    if state == "PRE":
+        return 60
+    # OFF, FINAL, unknown, no game
+    return 600
 
 def main():
     log("Script started.")
@@ -31,6 +38,7 @@ def main():
 
     emoji_due_at = None
     emoji_shown_for_game_id = None
+    current_poll_interval = config.POLL_INTERVAL_SECONDS
 
     try:
         while True:
@@ -50,7 +58,8 @@ def main():
                     emoji_due_at = None
                     emoji_shown_for_game_id = None
 
-                    t_end = time.time() + config.POLL_INTERVAL_SECONDS
+                    current_poll_interval = 1200  # 10 minutes when no game
+                    t_end = time.time() + current_poll_interval
                     while time.time() < t_end:
                         delay_ctrl.update()
                         time.sleep(0.05)
@@ -80,6 +89,7 @@ def main():
 
                 game_id = data.get("id")
                 state = data.get("state")
+                current_poll_interval = get_poll_interval_seconds(state)
 
                 # ------------- NEW GAME -------------
                 if game_id and game_id != last_game_id:
@@ -126,7 +136,8 @@ def main():
                             log(f"GOAL DETECTED! scorer={scorer.get('fullName')} jersey={jersey} team={scorer_team}")
 
                             # countdown then backlight animation
-                            local_delay = delay_ctrl.get_delay()
+                            local_delay = int(round(delay_ctrl.get_delay()))
+                            local_delay = max(0, local_delay)
                             lcd.show_text("GOAL DETECTED", f"Wait {local_delay}s")
                             log(f"Waiting {local_delay}s before triggering animation...")
                             for i in range(local_delay, 0, -1):
@@ -190,7 +201,7 @@ def main():
                 err_msg = str(e)[:config.LCD_COLS]
                 lcd.show_text("SCRIPT ERROR", err_msg)
 
-            t_end = time.time() + config.POLL_INTERVAL_SECONDS
+            t_end = time.time() + current_poll_interval
             while time.time() < t_end:
                 delay_ctrl.update()
                 time.sleep(0.05)
