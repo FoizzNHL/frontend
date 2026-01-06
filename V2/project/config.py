@@ -2,7 +2,7 @@
 
 # ---------- BACKEND ----------
 BACKEND_BASE_URL = "https://api-web.nhle.com/v1"
-TEAM_ABBR = "MTL"
+TEAM_ABBR = "COL"
 
 # ---------- LCD ----------
 LCD_I2C_ADDRESS = 0x27
