@@ -123,10 +123,16 @@ class MatrixNumberDisplay:
 
         self.digit_w, self.digit_h = _digit_size(self.digits)
 
+
     def _xy_to_index(self, x, y):
-        # (0,0) top-left
+        # rotate display 180°
+        x = self.w - 1 - x
+        y = self.h - 1 - y
+
+        # serpentine mapping based on the (rotated) row
         if self.serpentine and (y % 2 == 1):
             x = self.w - 1 - x
+
         return y * self.w + x
 
     def _set_pixel(self, x, y, color):
