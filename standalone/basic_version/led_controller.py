@@ -7,13 +7,11 @@ class LedController:
     def __init__(self):
         # A) Score matrix (15x12 on GPIO 18 for example)
         self.matrix = MatrixNumberDisplay(
-            matrix_height=12,
             led_pin=18,
             led_channel=0,     # channel 0
             led_brightness=80,
             entry="bottom_right",
             serpentine=True,
-            serpentine_axis="cols",
         )
 
         # B) Back-of-screen strip (example: 60 LEDs on GPIO 13 channel 1)
