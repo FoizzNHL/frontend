@@ -12,7 +12,10 @@ class LedController:
             led_pin=18,
             led_channel=0,     # channel 0
             led_brightness=80,
+            entry="bottom_right",
             serpentine=True,
+            serpentine_axis="rows",
+            rotation=0,
         )
 
         # B) Back-of-screen strip (example: 60 LEDs on GPIO 13 channel 1)

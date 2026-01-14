@@ -134,12 +134,18 @@ class MatrixNumberDisplay:
         led_invert=False,
         led_channel=0,
         serpentine=True,
+        entry="bottom_right",      # "bottom_right" (you) / "bottom_left" / "top_left" / "top_right"
+        serpentine_axis="rows",    # "rows" OR "cols"
+        rotation=0,                # 0 / 90 / 180 / 270
         digits_map=DIGITS_6x9,
     ):
         self.w = int(matrix_width)
         self.h = int(matrix_height)
         self.serpentine = serpentine
         self.digits = digits_map
+        self.entry = entry
+        self.serpentine_axis = serpentine_axis
+        self.rotation = rotation
 
         # Validate digits once
         self.digit_w, self.digit_h = _digit_size(self.digits)
@@ -162,16 +168,53 @@ class MatrixNumberDisplay:
         )
         self.strip.begin()
 
+    def _apply_rotation(self, x, y):
+        # rotate coordinates within (w,h)
+        if self.rotation == 0:
+            return x, y
+        if self.rotation == 90:
+            return (self.h - 1 - y), x
+        if self.rotation == 180:
+            return (self.w - 1 - x), (self.h - 1 - y)
+        if self.rotation == 270:
+            return y, (self.w - 1 - x)
+        raise ValueError("rotation must be 0, 90, 180, or 270")
+
     def _xy_to_index(self, x, y):
-        # rotate display 180°
-        x = self.w - 1 - x
-        y = self.h - 1 - y
+        # 1) apply rotation first
+        x, y = self._apply_rotation(x, y)
 
-        # serpentine mapping based on the (rotated) row
-        if self.serpentine and (y % 2 == 1):
-            x = self.w - 1 - x
+        # 2) normalize to a "top-left entry" virtual space by flipping
+        if self.entry == "top_left":
+            xx, yy = x, y
+        elif self.entry == "top_right":
+            xx, yy = (self.w - 1 - x), y
+        elif self.entry == "bottom_left":
+            xx, yy = x, (self.h - 1 - y)
+        elif self.entry == "bottom_right":
+            xx, yy = (self.w - 1 - x), (self.h - 1 - y)
+        else:
+            raise ValueError("entry must be top_left/top_right/bottom_left/bottom_right")
 
-        return y * self.w + x
+        # 3) serpentine (choose whether your wiring snakes by rows or by columns)
+        if self.serpentine:
+            if self.serpentine_axis == "rows":
+                # every other ROW reverses X
+                if (yy % 2) == 1:
+                    xx = (self.w - 1 - xx)
+                return yy * self.w + xx
+
+            if self.serpentine_axis == "cols":
+                # every other COLUMN reverses Y
+                if (xx % 2) == 1:
+                    yy = (self.h - 1 - yy)
+                return xx * self.h + yy
+
+            raise ValueError("serpentine_axis must be 'rows' or 'cols'")
+
+        # non-serpentine (simple raster)
+        return yy * self.w + xx
+
 
     def _set_pixel(self, x, y, color_int):
         if 0 <= x < self.w and 0 <= y < self.h:
