@@ -235,6 +235,18 @@ class MatrixNumberDisplay:
                 if ch == "1":
                     self._set_pixel(x0 + x, y0 + y, fg_color_int)
 
+    def debug_corners(self):
+        self.clear()
+        # (0,0) top-left
+        self._set_pixel(0, 0, _to_color((255, 0, 0)))
+        # (w-1,0) top-right
+        self._set_pixel(self.w - 1, 0, _to_color((0, 255, 0)))
+        # (0,h-1) bottom-left
+        self._set_pixel(0, self.h - 1, _to_color((0, 0, 255)))
+        # (w-1,h-1) bottom-right
+        self._set_pixel(self.w - 1, self.h - 1, _to_color((255, 255, 255)))
+        self.strip.show()
+
     def show_number(self, n: int, fg=(255, 255, 255), bg=(0, 0, 30), gap=1):
         """
         Displays 0-99 centered.

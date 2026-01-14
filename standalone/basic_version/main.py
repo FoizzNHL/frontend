@@ -47,7 +47,8 @@ def main():
                     msg = data.get("message", "")
                     log(f"No game: {msg}")
                     efg, ebg = get_team_colors(config.TEAM_ABBR)
-                    leds.matrix.show_number(42, fg=efg, bg=ebg)
+                    leds.matrix.debug_corners()
+                    # leds.matrix.show_number(42, fg=efg, bg=ebg)
                     leds.backlight.fill(ebg)
                     
                     last_game_id = None
