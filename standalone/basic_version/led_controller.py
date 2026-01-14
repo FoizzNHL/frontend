@@ -15,7 +15,7 @@ class LedController:
             entry="bottom_right",
             serpentine=True,
             serpentine_axis="cols",
-            rotation=90,
+            rotation=270,
         )
 
         # B) Back-of-screen strip (example: 60 LEDs on GPIO 13 channel 1)
