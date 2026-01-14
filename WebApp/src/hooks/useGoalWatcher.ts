@@ -18,18 +18,15 @@ type GoalWithMeta = NhlGoal & {
   scorer?: NhlGoalScorer & { id?: string | number };
 };
 
-/** Build a stable goal id even if the API doesn't give one */
+/** Build a stable goal id using only immutable properties */
 function goalKey(g: GoalWithMeta): string {
   if (g.id != null) return String(g.id);
 
+  // Only use properties that won't change after the goal is scored
   const parts = [
     g.gamePk ?? "",
     g.period ?? "",
-    g.timeInPeriod ?? "",
-    g.scorer?.id ?? g.scorer?.fullName ?? "",
-    g.scorer?.team ?? "",
-    g.awayScore ?? "",
-    g.homeScore ?? "",
+    g.scorer?.team ?? "", // Team scoring the goal (won't change)
   ];
 
   return parts.join("|");
@@ -150,24 +147,39 @@ export function useGoalWatcher(
           }
         }
 
-        const gameScore = await getGameForTeam(gameId?.toString() || "");
-        const state: string | undefined = (gameScore as NhlScore).state;
-
-         if (state) {
-          const prevState = prevGameStateRef.current;
-          if (prevState === null) {
-            // first tick, just store it
-            prevGameStateRef.current = state;
-          } else if (prevState === "FUT" && state !== "FUT") {
-            prevGameStateRef.current = state;
+        try {
+          const gameScore = await getGameForTeam(gameId?.toString() || "");
+          const state: string | undefined = (gameScore as NhlScore)?.state;
+          
+          if (state) {
+            const prevState = prevGameStateRef.current;
             const gameStartCb = gameStartCbRef.current;
-            if (!cancelled && gameStartCb) {
-              gameStartCb(state, data);
+          
+            const isPreGame = (s: string | null | undefined) =>
+              s === "FUT" || s === "PRE" || s === "PREGAME";
+          
+            if (prevState === null) {
+              // First tick for this game
+              prevGameStateRef.current = state;
+          
+              // If we *already* are in a live/playing state when we first connect,
+              // treat it as "game started" so the user still gets the sound.
+              if (!isPreGame(state) && !cancelled && gameStartCb) {
+                gameStartCb(state, data);
+              }
+            } else if (isPreGame(prevState) && !isPreGame(state)) {
+              // Transition from pre-game (FUT/PRE) to live/post (LIVE/IN/1ST/etc.)
+              prevGameStateRef.current = state;
+              if (!cancelled && gameStartCb) {
+                gameStartCb(state, data);
+              }
+            } else if (prevState !== state) {
+              // Just keep it up to date
+              prevGameStateRef.current = state;
             }
-          } else if (prevState !== state) {
-            // keep it up to date even if you only care about FUT->X
-            prevGameStateRef.current = state;
           }
+        } catch {
+          // If game state fetch fails, continue with goal checking
         }
 
         let newOnes = diffNewGoals(
@@ -208,6 +220,7 @@ export function useGoalWatcher(
         }
       } catch {
         // keep polling even if one request fails
+        
       } finally {
         if (!cancelled) {
           timer = window.setTimeout(() => {
