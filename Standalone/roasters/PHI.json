@@ -1,0 +1,217 @@
+[
+  {
+    "id": 8479022,
+    "fullName": "Rodrigo Abols",
+    "position": "C",
+    "number": 18,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8479022.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8481553,
+    "fullName": "Bobby Brink",
+    "position": "R",
+    "number": 10,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8481553.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8480220,
+    "fullName": "Noah Cates",
+    "position": "L",
+    "number": 27,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8480220.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8476461,
+    "fullName": "Sean Couturier",
+    "position": "C",
+    "number": 14,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8476461.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8475235,
+    "fullName": "Nicolas Deslauriers",
+    "position": "L",
+    "number": 44,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8475235.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8477989,
+    "fullName": "Christian Dvorak",
+    "position": "C",
+    "number": 22,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8477989.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8482159,
+    "fullName": "Tyson Foerster",
+    "position": "R",
+    "number": 71,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8482159.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8483733,
+    "fullName": "Nikita Grebenkin",
+    "position": "R",
+    "number": 29,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8483733.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8479336,
+    "fullName": "Carl Grundstrom",
+    "position": "R",
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8479336.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8477903,
+    "fullName": "Garnet Hathaway",
+    "position": "R",
+    "number": 19,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8477903.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8478439,
+    "fullName": "Travis Konecny",
+    "position": "R",
+    "number": 11,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8478439.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8484387,
+    "fullName": "Matvei Michkov",
+    "position": "R",
+    "number": 39,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8484387.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8480015,
+    "fullName": "Owen Tippett",
+    "position": "R",
+    "number": 74,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8480015.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8481533,
+    "fullName": "Trevor Zegras",
+    "position": "C",
+    "number": 46,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8481533.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8482126,
+    "fullName": "Emil Andrae",
+    "position": "D",
+    "number": 36,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8482126.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8482142,
+    "fullName": "Jamie Drysdale",
+    "position": "D",
+    "number": 9,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8482142.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8478454,
+    "fullName": "Noah Juulsen",
+    "position": "D",
+    "number": 47,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8478454.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8477499,
+    "fullName": "Rasmus Ristolainen",
+    "position": "D",
+    "number": 55,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8477499.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8477948,
+    "fullName": "Travis Sanheim",
+    "position": "D",
+    "number": 6,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8477948.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8476372,
+    "fullName": "Nick Seeler",
+    "position": "D",
+    "number": 24,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8476372.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8481546,
+    "fullName": "Cam York",
+    "position": "D",
+    "number": 8,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8481546.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8481178,
+    "fullName": "Egor Zamula",
+    "position": "D",
+    "number": 5,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8481178.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8481035,
+    "fullName": "Samuel Ersson",
+    "position": "G",
+    "number": 33,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8481035.png",
+    "team": "PHI"
+  },
+  {
+    "id": 8478435,
+    "fullName": "Dan Vladar",
+    "position": "G",
+    "number": 80,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/PHI/8478435.png",
+    "team": "PHI"
+  }
+]
