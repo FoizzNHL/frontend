@@ -48,7 +48,7 @@ def main():
                     log(f"No game: {msg}")
                     efg, ebg = get_team_colors(config.TEAM_ABBR)
                     leds.matrix.emoji_animation("sad", fg=efg, bg=ebg, pulses=4)
-                    leds.backlight.fill(efg)
+                    leds.backlight.fill(ebg)
                     
                     last_game_id = None
                     last_goal_count = None
