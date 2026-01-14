@@ -46,7 +46,9 @@ def main():
                 if data.get("noGame"):
                     msg = data.get("message", "")
                     log(f"No game: {msg}")
-
+                    efg, ebg = get_team_colors(config.TEAM_ABBR)
+                    leds.matrix.emoji_animation("sad", fg=efg, bg=ebg, pulses=4)
+                    
                     last_game_id = None
                     last_goal_count = None
                     emoji_due_at = None
