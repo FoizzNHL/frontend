@@ -7,8 +7,7 @@ from log_utils import log
 
 
 class DelayController:
-    def __init__(self, lcd_display):
-        self.lcd = lcd_display
+    def __init__(self):
         self.delay_seconds = config.DEFAULT_DELAY_SECONDS
 
         # No active_state here (your pin isn't floating, so gpiozero rejects it)
@@ -60,7 +59,6 @@ class DelayController:
                     self.delay_seconds -= 1
                     self._last_decrement_at = now
                     log(f"Delay updated (hold): {self.delay_seconds}s")
-                    self.lcd.show_delay_only(self.delay_seconds)
 
         # Release edge
         if (not pressed) and self._last_phys_pressed:
@@ -75,6 +73,5 @@ class DelayController:
                 if press_duration < config.HOLD_THRESHOLD:
                     self.delay_seconds += 1
                     log(f"Quick tap => Delay incremented to {self.delay_seconds}s")
-                    self.lcd.show_delay_only(self.delay_seconds)
 
         self._last_phys_pressed = pressed

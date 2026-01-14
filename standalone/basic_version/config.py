@@ -4,12 +4,6 @@
 BACKEND_BASE_URL = "https://api-web.nhle.com/v1"
 TEAM_ABBR = "MTL"
 
-# ---------- LCD ----------
-LCD_I2C_ADDRESS = 0x27
-I2C_PORT = 1
-LCD_COLS = 16
-LCD_ROWS = 2
-
 # ---------- POLLING ----------
 POLL_INTERVAL_SECONDS = 5
 

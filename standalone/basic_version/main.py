@@ -3,7 +3,6 @@ import time
 
 import config
 from log_utils import log
-from lcd_display import LcdDisplay
 from led_controller import LedController
 from backend_client import fetch_game_now
 
@@ -25,13 +24,10 @@ def get_poll_interval_seconds(state: str | None) -> int:
 def main():
     log("Script started.")
 
-    lcd = LcdDisplay()
     leds = LedController()
-    delay_ctrl = DelayController(lcd)
+    delay_ctrl = DelayController()
 
-    lcd.show_text("NHL SCORE", "Starting...")
     time.sleep(1)
-    lcd.show_delay_only(delay_ctrl.get_delay())
 
     last_game_id = None
     last_goal_count = None
@@ -50,8 +46,6 @@ def main():
                 if data.get("noGame"):
                     msg = data.get("message", "")
                     log(f"No game: {msg}")
-                    lcd.show_text("NO GAME", msg[:config.LCD_COLS])
-                    lcd.show_delay_only(delay_ctrl.get_delay())
 
                     last_game_id = None
                     last_goal_count = None
@@ -68,7 +62,6 @@ def main():
                 # ------------- ERROR -------------
                 if not data.get("ok"):
                     log("Backend returned ok=false")
-                    lcd.show_text("BACKEND ERR", "ok=false")
                     t_end = time.time() + config.POLL_INTERVAL_SECONDS
                     while time.time() < t_end:
                         delay_ctrl.update()
@@ -83,9 +76,8 @@ def main():
                 away_score = int(away.get("score", 0))
 
                 line1 = f"{home.get('abbr')} {home_score}-{away_score} {away.get('abbr')}"
-                lcd.show_text(line1, "")
-                lcd.show_delay_only(delay_ctrl.get_delay())
                 log(f"Score Update: {line1}")
+                log(f"Delay: {delay_ctrl.get_delay()}")
 
                 game_id = data.get("id")
                 state = data.get("state")
@@ -139,7 +131,6 @@ def main():
                             # countdown then backlight animation
                             local_delay = int(round(delay_ctrl.get_delay()))
                             local_delay = max(0, local_delay)
-                            lcd.show_text("GOAL DETECTED", f"Wait {local_delay}s")
                             log(f"Waiting {local_delay}s before triggering animation...")
                             for i in range(local_delay, 0, -1):
                                 log(f"Countdown: {i}s remaining")
@@ -150,7 +141,6 @@ def main():
                                     time.sleep(0.05)
 
                             if scorer_team and scorer_team != my_team:
-                                lcd.show_text("GOAL AGAINST", f"{scorer_team} scored")
                                 try:
                                     # use your team colors (or swap to scorer_team if you prefer)
                                     fg, bg = get_team_colors(scorer_team)
@@ -158,7 +148,6 @@ def main():
                                     log("Opponent goal -> sad emoji shown. (No jersey / no flash)")
                                 except Exception as e:
                                     log(f"Opponent sad emoji error: {e}")
-                                    lcd.show_text("GOAL AGAINST", "EMOJI ERR")
 
                                 # ✅ still schedule the "state of the game" emoji 20s later
                                 emoji_due_at = time.time() + 20
@@ -171,16 +160,10 @@ def main():
                                     jersey_int = int(jersey)
                                     fg_color, bg_color = get_team_colors(scorer_team)
 
-                                    lcd.show_text("GOAL!!!", f"{scorer_team} #{jersey_int}")
                                     leds.goal_matrix_animation(jersey_int, fg=fg_color, bg=bg_color)
 
                                 except Exception as e:
                                     log(f"Matrix jersey display error: {e}")
-                                    lcd.show_text("GOAL!!!", "JERSEY ERR")
-                            else:
-                                lcd.show_text("GOAL!!!", "JERSEY N/A")
-
-                            lcd.show_text("GOAL!!!", "GO HABS GO")
 
                             # ✅ schedule emoji 20s AFTER goal animation
                             emoji_due_at = time.time() + 20
@@ -199,8 +182,6 @@ def main():
 
             except Exception as e:
                 log(f"ERROR in main loop: {e}")
-                err_msg = str(e)[:config.LCD_COLS]
-                lcd.show_text("SCRIPT ERROR", err_msg)
 
             t_end = time.time() + current_poll_interval
             while time.time() < t_end:
@@ -209,9 +190,7 @@ def main():
 
     except KeyboardInterrupt:
         log("Script interrupted by user.")
-        lcd.clear()
         leds.turn_off()
-        lcd.close()
 
 
 if __name__ == "__main__":
