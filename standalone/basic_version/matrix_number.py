@@ -21,46 +21,46 @@ DIGITS_6x9 = {
 
 EMOJIS_15x12 = {
     "sad": [
-        "000000000000000",
-        "000000000000000",
-        "001110000011100",
-        "001110000011100",
-        "001110000011100",
-        "000000000000000",
-        "000000000000000",
-        "000111111111000",
-        "001111111111100",
-        "011111111111110",
-        "000000000000000",
-        "000000000000000",
+        "00000000000000",
+        "00000000000000",
+        "00111000011100",
+        "00111000011100",
+        "00111000011100",
+        "00000000000000",
+        "00000000000000",
+        "00011111111000",
+        "00111111111100",
+        "01111111111110",
+        "00000000000000",
+        "00000000000000",
     ],
     "happy": [
-        "000000000000000",
-        "000000000000000",
-        "001110000011100",
-        "001110000011100",
-        "001110000011100",
-        "000000000000000",
-        "000000000000000",
-        "011111111111110",
-        "001111111111100",
-        "000111111111000",
-        "000000000000000",
-        "000000000000000",
+        "00000000000000",
+        "00000000000000",
+        "00111000011100",
+        "00111000011100",
+        "00111000011100",
+        "00000000000000",
+        "00000000000000",
+        "01111111111110",
+        "00111111111100",
+        "00011111111000",
+        "00000000000000",
+        "00000000000000",
     ],
     "stressed": [
-        "000000000000000",
-        "000000000000000",
-        "001110000011100",
-        "001110000011100",
-        "001110000011100",
-        "000000000000000",
-        "000000000000000",
-        "010001000100010",
-        "001010101010100",
-        "000100010001000",
-        "000000000000000",
-        "000000000000000",
+        "00000000000000",
+        "00000000000000",
+        "00111000011100",
+        "00111000011100",
+        "00111000011100",
+        "00000000000000",
+        "00000000000000",
+        "10001000100010",
+        "01010101010100",
+        "00100010001000",
+        "00000000000000",
+        "00000000000000",
     ],
 }
 
@@ -334,15 +334,32 @@ class MatrixNumberDisplay:
 
     def show_emoji(self, name: str, fg, bg=(0, 0, 0)):
         """
-        Draw 14x12 emoji centered on the matrix.
+        Draw emoji centered on the matrix.
+        If the emoji bitmap is bigger than the matrix, it will be center-cropped to fit.
         fg/bg accept (r,g,b) tuples.
         """
         if name not in EMOJIS_15x12:
             raise ValueError(f"Unknown emoji: {name}")
 
         bitmap = EMOJIS_15x12[name]
-        h = len(bitmap)
-        w = len(bitmap[0]) if h else 0
+        src_h = len(bitmap)
+        src_w = len(bitmap[0]) if src_h else 0
+
+        # ---- center-crop to fit matrix ----
+        crop_w = max(0, src_w - self.w)
+        crop_h = max(0, src_h - self.h)
+
+        left_crop = crop_w // 2
+        right_crop = crop_w - left_crop
+        top_crop = crop_h // 2
+        bot_crop = crop_h - top_crop
+
+        cropped = bitmap[top_crop: src_h - bot_crop] if crop_h else bitmap
+        if crop_w:
+            cropped = [row[left_crop: src_w - right_crop] for row in cropped]
+
+        h = len(cropped)
+        w = len(cropped[0]) if h else 0
 
         x0 = (self.w - w) // 2
         y0 = (self.h - h) // 2
@@ -352,7 +369,7 @@ class MatrixNumberDisplay:
 
         # draw emoji
         fg_int = _to_color(fg)
-        for y, row in enumerate(bitmap):
+        for y, row in enumerate(cropped):
             for x, ch in enumerate(row):
                 if ch == "1":
                     self._set_pixel(x0 + x, y0 + y, fg_int)
