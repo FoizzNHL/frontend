@@ -1,0 +1,227 @@
+[
+  {
+    "id": 8479414,
+    "fullName": "Nathan Bastian",
+    "position": "R",
+    "number": 11,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8479414.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8473994,
+    "fullName": "Jamie Benn",
+    "position": "L",
+    "number": 14,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8473994.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8476278,
+    "fullName": "Colin Blackwell",
+    "position": "C",
+    "number": 15,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8476278.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8482145,
+    "fullName": "Mavrik Bourque",
+    "position": "C",
+    "number": 22,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8482145.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8480840,
+    "fullName": "Oskar Bäck",
+    "position": "C",
+    "number": 10,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8480840.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8475168,
+    "fullName": "Matt Duchene",
+    "position": "C",
+    "number": 95,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8475168.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8477454,
+    "fullName": "Adam Erne",
+    "position": "L",
+    "number": 73,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8477454.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8476889,
+    "fullName": "Radek Faksa",
+    "position": "C",
+    "number": 12,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8476889.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8478449,
+    "fullName": "Roope Hintz",
+    "position": "C",
+    "number": 24,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8478449.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8484829,
+    "fullName": "Justin Hryckowian",
+    "position": "C",
+    "number": 49,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8484829.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8482740,
+    "fullName": "Wyatt Johnston",
+    "position": "C",
+    "number": 53,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8482740.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8478420,
+    "fullName": "Mikko Rantanen",
+    "position": "R",
+    "number": 96,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8478420.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8480027,
+    "fullName": "Jason Robertson",
+    "position": "L",
+    "number": 21,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8480027.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8475794,
+    "fullName": "Tyler Seguin",
+    "position": "C",
+    "number": 91,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8475794.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8479351,
+    "fullName": "Sam Steel",
+    "position": "C",
+    "number": 18,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8479351.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8483425,
+    "fullName": "Lian Bichsel",
+    "position": "D",
+    "number": 6,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8483425.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8478476,
+    "fullName": "Kyle Capobianco",
+    "position": "D",
+    "number": 20,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8478476.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8481581,
+    "fullName": "Thomas Harley",
+    "position": "D",
+    "number": 55,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8481581.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8480036,
+    "fullName": "Miro Heiskanen",
+    "position": "D",
+    "number": 4,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8480036.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8476902,
+    "fullName": "Esa Lindell",
+    "position": "D",
+    "number": 23,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8476902.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8480878,
+    "fullName": "Nils Lundkvist",
+    "position": "D",
+    "number": 5,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8480878.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8480950,
+    "fullName": "Ilya Lyubushkin",
+    "position": "D",
+    "number": 46,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8480950.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8475755,
+    "fullName": "Alexander Petrovic",
+    "position": "D",
+    "number": 28,
+    "shoots": "R",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8475755.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8479193,
+    "fullName": "Casey DeSmith",
+    "position": "G",
+    "number": 1,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8479193.png",
+    "team": "DAL"
+  },
+  {
+    "id": 8479979,
+    "fullName": "Jake Oettinger",
+    "position": "G",
+    "number": 29,
+    "shoots": "L",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/DAL/8479979.png",
+    "team": "DAL"
+  }
+]
