@@ -14,7 +14,7 @@ class LedController:
             led_brightness=80,
             entry="bottom_right",
             serpentine=True,
-            serpentine_axis="rows",
+            serpentine_axis="cols",
             rotation=0,
         )
 
