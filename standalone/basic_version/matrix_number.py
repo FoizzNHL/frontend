@@ -192,7 +192,8 @@ class MatrixNumberDisplay:
         serpentine_axis: "rows" or "cols"
         first_dir: direction of the first run from the start corner
         """
-        y = self.h - 1 - y
+        # y = self.h - 1 - y
+        x = self.w - 1 - x
         # Remap so that the "origin-space" (ox,oy) has (0,0) at start_corner
         if self.start_corner == "top_left":
             ox, oy = x, y
